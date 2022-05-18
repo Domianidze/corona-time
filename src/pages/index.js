@@ -1,4 +1,4 @@
-export { default as Authorization } from './Authorization';
+export { default as Authentication } from './Authentication';
 export { default as Signup } from './Signup';
 export { default as Login } from './Login';
 export { default as ResetPassword } from './ResetPassword';

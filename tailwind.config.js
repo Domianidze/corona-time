@@ -1,7 +1,20 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'dark/100': '#010414',
+        'dark/60': '#808189',
+        'dark/20': '#E6E6E7',
+        'brand/secondary': '#0FBA68',
+      },
+      fontSize: {
+        '2.5xl': '1.5rem',
+      },
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+      },
+    },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/custom-forms')],
 };

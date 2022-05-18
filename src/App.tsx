@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import {
   Landing,
-  Authorization,
+  Authentication,
   Signup,
   Login,
   ResetPassword,
@@ -11,9 +11,9 @@ import {
 
 const App = () => {
   return (
-    <div className='App'>
+    <div className='App font-inter text-dark/100'>
       <Routes>
-        <Route path='/authorization' element={<Authorization />}>
+        <Route path='/authentication' element={<Authentication />}>
           <Route path='signup' element={<Signup />} />
           <Route path='login' element={<Login />} />
           <Route path='reset-password' element={<ResetPassword />} />
@@ -21,7 +21,7 @@ const App = () => {
           <Route index element={<Navigate to='signup' />} />
         </Route>
         <Route path='/landing' element={<Landing />} />
-        <Route index element={<Navigate to='/authorization' />} />
+        <Route index element={<Navigate to='/authentication' />} />
       </Routes>
     </div>
   );
