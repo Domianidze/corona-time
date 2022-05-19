@@ -23,7 +23,7 @@ const App = () => {
         <Route path='/reset' element={<Reset />}>
           <Route path='reset-password' element={<ResetPassword />} />
           <Route path='set-password' element={<SetPassword />} />
-          <Route path='*' element={<Navigate to='reset-pasword' />} />
+          <Route path='*' element={<Navigate to='reset-password' />} />
           <Route index element={<Navigate to='reset-password' />} />
         </Route>
         <Route path='/landing' element={<Landing />} />
