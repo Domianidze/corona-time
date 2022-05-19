@@ -7,6 +7,7 @@ module.exports = {
         'dark/60': '#808189',
         'dark/20': '#E6E6E7',
         'brand/secondary': '#0FBA68',
+        'brand/primary': '#2029F3',
       },
       fontSize: {
         '2.5xl': '1.5rem',
