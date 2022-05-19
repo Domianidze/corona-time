@@ -1,12 +1,13 @@
 const Input: React.FC<{
   label: string;
   type: string;
-  id: string;
   placeholder: string;
+  id: string;
+  classname?: string;
   note?: string;
 }> = (props) => {
   return (
-    <div className='py-3 flex flex-col'>
+    <div className={`py-3 flex flex-col ${props.classname}`}>
       <label htmlFor={props.id} className='font-bold'>
         {props.label}
       </label>

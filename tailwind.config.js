@@ -10,7 +10,7 @@ module.exports = {
         'brand/primary': '#2029F3',
       },
       fontSize: {
-        '2.5xl': '1.5rem',
+        '2.1xl': '1.55rem',
       },
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
