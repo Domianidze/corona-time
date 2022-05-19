@@ -28,7 +28,7 @@ const Login = () => {
         <div className='w-96 flex justify-between items-center'>
           <CheckBox label='Remember this device' id='remember-device' />
           <Link
-            to='/authentication/reset-password'
+            to='/reset/reset-password'
             className='text-sm font-semibold text-brand/primary'
           >
             Forgot Password?
