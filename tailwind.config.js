@@ -4,12 +4,15 @@ module.exports = {
     extend: {
       spacing: {
         300: '75rem',
+        200: '50rem',
+        150: '37.5rem',
       },
       colors: {
         'dark/100': '#010414',
         'dark/60': '#808189',
         'dark/20': '#E6E6E7',
         'dark/6': '#F6F6F7',
+        'dark/4': '#F6F6F7',
         'brand/primary': '#2029F3',
         'brand/secondary': '#0FBA68',
         'brand/teritary': '#EAD621',
