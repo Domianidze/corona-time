@@ -1,13 +1,15 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import {
-  Landing,
   Authentication,
   Signup,
   Login,
   Reset,
   ResetPassword,
   SetPassword,
+  Landing,
+  Worldwide,
+  ByCountry,
 } from 'pages';
 
 const App = () => {
@@ -26,7 +28,12 @@ const App = () => {
           <Route path='*' element={<Navigate to='reset-password' />} />
           <Route index element={<Navigate to='reset-password' />} />
         </Route>
-        <Route path='/landing' element={<Landing />} />
+        <Route path='/landing' element={<Landing />}>
+          <Route path='worldwide' element={<Worldwide />} />
+          <Route path='by-country' element={<ByCountry />} />
+          <Route path='*' element={<Navigate to='worldwide' />} />
+          <Route index element={<Navigate to='worldwide' />} />
+        </Route>
         <Route path='*' element={<Navigate to='/authentication' />} />
         <Route index element={<Navigate to='/authentication' />} />
       </Routes>

@@ -5,7 +5,7 @@ import Button from 'components/Button';
 const SavePassword = () => {
   return (
     <form>
-      <Title value='Reset Password' />
+      <Title value='Reset Password' className='center' />
       <Input
         type='password'
         label='New password'

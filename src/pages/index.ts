@@ -5,3 +5,5 @@ export { default as Reset } from './Reset';
 export { default as ResetPassword } from './ResetPassword';
 export { default as SetPassword } from './SetPassword';
 export { default as Landing } from './Landing';
+export { default as Worldwide } from './Worldwide';
+export { default as ByCountry } from './ByCountry';
