@@ -21,7 +21,7 @@ const Table: React.FC<{
                 <th className='px-8 w-48'>
                   <p className='flex items-center text-sm font-semibold pr-3'>
                     {header.title}{' '}
-                    <img src={ArrowsImg} alt='arrow' className='pl-1' />
+                    <img src={ArrowsImg} alt='arrow' className='pl-2' />
                   </p>
                 </th>
               );

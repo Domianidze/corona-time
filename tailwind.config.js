@@ -17,6 +17,7 @@ module.exports = {
         'brand/secondary': '#0FBA68',
         'brand/teritary': '#EAD621',
         'system/success': '#249E2C',
+        'system/error': '#CC1E1E',
       },
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
