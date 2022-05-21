@@ -39,7 +39,7 @@ const Signup = () => {
               required: 'Username is required',
               minLength: {
                 value: 3,
-                message: 'Username has to containt at least 3 symbols',
+                message: 'Username has to contain at least 3 symbols',
               },
             }),
           }}
