@@ -1,4 +1,8 @@
+import { useContext } from 'react';
+
 import axios from 'axios';
+
+import AuthContext from 'store/AuthContext';
 
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -12,6 +16,7 @@ import Button from 'components/Button';
 import { API_URL } from 'config/api';
 
 const Login = () => {
+  const authCtx = useContext(AuthContext);
   const navigate = useNavigate();
 
   const {
@@ -38,7 +43,7 @@ const Login = () => {
       });
 
       const token = response.data.token;
-      console.log(token);
+      authCtx.onLogin(token, data.username, data.rememberDevice);
 
       navigate('/landing');
     } catch (err: any) {

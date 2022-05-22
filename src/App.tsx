@@ -1,3 +1,6 @@
+import { useContext, useEffect } from 'react';
+import AuthContext from 'store/AuthContext';
+
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import {
@@ -16,14 +19,34 @@ import {
 } from 'pages';
 
 const App = () => {
+  const authCtx = useContext(AuthContext);
+  const isLoggedIn = !!localStorage.getItem('token') || authCtx.isLoggedIn;
+
+  const { onLogin } = authCtx;
+
+  useEffect(() => {
+    const savedToken = localStorage.getItem('token');
+    const savedUsername = localStorage.getItem('username');
+
+    if (savedToken && savedUsername) {
+      onLogin(savedToken, savedUsername, true);
+    }
+  }, [onLogin]);
+
+  let indexRoute = './authentication';
+
+  if (isLoggedIn) {
+    indexRoute = './landing';
+  }
+
   return (
     <div className='App font-inter text-dark/100'>
       <Routes>
         <Route path='/authentication' element={<Authentication />}>
           <Route path='signup' element={<Signup />} />
           <Route path='login' element={<Login />} />
-          <Route path='*' element={<Navigate to='signup' />} />
-          <Route index element={<Navigate to='signup' />} />
+          <Route path='*' element={<Navigate to='login' />} />
+          <Route index element={<Navigate to='login' />} />
         </Route>
         <Route path='/reset' element={<Reset />}>
           <Route path='reset-password' element={<ResetPassword />} />
@@ -35,14 +58,16 @@ const App = () => {
           <Route path='send-email' element={<SendEmail />} />
           <Route path='confirm-account' element={<ConfirmAccount />} />
         </Route>
-        <Route path='/landing' element={<Landing />}>
-          <Route path='worldwide' element={<Worldwide />} />
-          <Route path='by-country' element={<ByCountry />} />
-          <Route path='*' element={<Navigate to='worldwide' />} />
-          <Route index element={<Navigate to='worldwide' />} />
-        </Route>
-        <Route path='*' element={<Navigate to='/authentication' />} />
-        <Route index element={<Navigate to='/authentication' />} />
+        {isLoggedIn && (
+          <Route path='/landing' element={<Landing />}>
+            <Route path='worldwide' element={<Worldwide />} />
+            <Route path='by-country' element={<ByCountry />} />
+            <Route path='*' element={<Navigate to='worldwide' />} />
+            <Route index element={<Navigate to='worldwide' />} />
+          </Route>
+        )}
+        <Route path='*' element={<Navigate to={indexRoute} />} />
+        <Route index element={<Navigate to={indexRoute} />} />
       </Routes>
     </div>
   );
