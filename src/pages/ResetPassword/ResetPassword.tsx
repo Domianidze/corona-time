@@ -1,10 +1,18 @@
+import axios from 'axios';
+
+import { useNavigate } from 'react-router-dom';
+
 import { useForm } from 'react-hook-form';
 
 import Title from 'components/Title';
 import Input from 'components/Input';
 import Button from 'components/Button';
 
+import { API_URL, RECOVER_PASSWORD_URL } from 'config/api';
+
 const ResetPassword = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -13,8 +21,24 @@ const ResetPassword = () => {
     mode: 'onTouched',
   });
 
-  const resetPasswordHandler = handleSubmit((data) => {
-    console.log(data);
+  const resetPasswordHandler = handleSubmit(async (data) => {
+    try {
+      const requestData = {
+        email: data.email,
+        backlink: RECOVER_PASSWORD_URL,
+      };
+
+      await axios.post(`${API_URL}/password/send-recovery-link`, requestData, {
+        headers: {
+          accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      });
+
+      navigate('/notification/send-email');
+    } catch (err) {
+      console.error(err);
+    }
   });
 
   return (
