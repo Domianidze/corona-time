@@ -13,6 +13,7 @@ import {
   Notification,
   SendEmail,
   ConfirmAccount,
+  UpdatePassword,
   Landing,
   Worldwide,
   ByCountry,
@@ -57,6 +58,7 @@ const App = () => {
         <Route path='/notification' element={<Notification />}>
           <Route path='send-email' element={<SendEmail />} />
           <Route path='confirm-account' element={<ConfirmAccount />} />
+          <Route path='update-password' element={<UpdatePassword />} />
         </Route>
         {isLoggedIn && (
           <Route path='/landing' element={<Landing />}>

@@ -7,6 +7,7 @@ export { default as SetPassword } from './SetPassword';
 export { default as Notification } from './Notification';
 export { default as SendEmail } from './SendEmail';
 export { default as ConfirmAccount } from './ConfirmAccount';
+export { default as UpdatePassword } from './UpdatePassword';
 export { default as Landing } from './Landing';
 export { default as Worldwide } from './Worldwide';
 export { default as ByCountry } from './ByCountry';

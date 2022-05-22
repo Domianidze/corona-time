@@ -11,12 +11,13 @@ import { API_URL } from 'config/api';
 
 const ConfirmAccount = () => {
   const location = useLocation();
+  const hash = location.search.replace('?hash=', '');
 
   useEffect(() => {
     const confirmAccount = async () => {
       try {
         const requestData = {
-          hash: location.search.replace('?hash=', ''),
+          hash,
         };
 
         await axios.post(`${API_URL}/confirm-account`, requestData, {
@@ -31,7 +32,7 @@ const ConfirmAccount = () => {
     };
 
     confirmAccount();
-  }, [location.search]);
+  }, [hash]);
 
   return (
     <div>

@@ -1,10 +1,27 @@
+import { useContext } from 'react';
+
+import axios from 'axios';
+
+import AuthContext from 'store/AuthContext';
+
+import { useLocation, useNavigate } from 'react-router-dom';
+
 import { useForm } from 'react-hook-form';
 
 import Title from 'components/Title';
 import Input from 'components/Input';
 import Button from 'components/Button';
 
-const SavePassword = () => {
+import { API_URL } from 'config/api';
+
+const SetPassword = () => {
+  const authCtx = useContext(AuthContext);
+
+  const location = useLocation();
+  const hash = location.search.replace('?hash=', '');
+
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -14,8 +31,25 @@ const SavePassword = () => {
     mode: 'onTouched',
   });
 
-  const setPasswordHandler = handleSubmit((data) => {
-    console.log(data);
+  const setPasswordHandler = handleSubmit(async (data) => {
+    try {
+      const requestData = {
+        ...data,
+        hash: hash,
+      };
+
+      await axios.post(`${API_URL}/password/recover`, requestData, {
+        headers: {
+          accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      });
+
+      authCtx.onLogout();
+      navigate('/notification/update-password');
+    } catch (err) {
+      console.error(err);
+    }
   });
 
   return (
@@ -61,4 +95,4 @@ const SavePassword = () => {
   );
 };
 
-export default SavePassword;
+export default SetPassword;
