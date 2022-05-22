@@ -41,20 +41,20 @@ const SavePassword = () => {
       />
       <Input
         type='password'
-        label='Repeat password'
+        label=' password'
         placeholder='Repeat password'
         id='repeat-password'
         classname='pb-10'
         register={{
-          ...register('confirmPassword', {
+          ...register('repeatPassword', {
             required: 'Repeating password is required',
             validate: (value) => {
               return value === watch('password') || 'Passwords must match';
             },
           }),
         }}
-        error={errors?.confirmPassword?.message}
-        isTouched={touchedFields?.confirmPassword}
+        error={errors?.repeatPassword?.message}
+        isTouched={touchedFields?.repeatPassword}
       />
       <Button type='submit' value='Save Changes' />
     </form>

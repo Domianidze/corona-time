@@ -7,6 +7,9 @@ import {
   Reset,
   ResetPassword,
   SetPassword,
+  Notification,
+  SendEmail,
+  ConfirmAccount,
   Landing,
   Worldwide,
   ByCountry,
@@ -27,6 +30,10 @@ const App = () => {
           <Route path='set-password' element={<SetPassword />} />
           <Route path='*' element={<Navigate to='reset-password' />} />
           <Route index element={<Navigate to='reset-password' />} />
+        </Route>
+        <Route path='/notification' element={<Notification />}>
+          <Route path='send-email' element={<SendEmail />} />
+          <Route path='confirm-account' element={<ConfirmAccount />} />
         </Route>
         <Route path='/landing' element={<Landing />}>
           <Route path='worldwide' element={<Worldwide />} />

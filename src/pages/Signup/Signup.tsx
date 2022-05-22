@@ -1,24 +1,57 @@
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useForm } from 'react-hook-form';
 
 import WelcomeText from 'components/WelcomeText';
 import Input from 'components/Input';
-import CheckBox from 'components/CheckBox';
 import Button from 'components/Button';
 
+import { API_URL, SIGN_UP_CONFIRM_URL } from 'config/api';
+
 const Signup = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors, touchedFields },
     watch,
+    setError,
   } = useForm({
     mode: 'onTouched',
   });
 
-  const signupHandler = handleSubmit((data) => {
-    console.log(data);
+  const signupHandler = handleSubmit(async (data) => {
+    try {
+      const requestData = {
+        ...data,
+        redirectOnConfirm: SIGN_UP_CONFIRM_URL,
+      };
+
+      await axios.post(`${API_URL}/register`, requestData, {
+        headers: {
+          accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      });
+
+      navigate('/notification/send-email');
+    } catch (err: any) {
+      const message = err?.response.data[0].message;
+
+      if (message.includes('username')) {
+        setError('username', {
+          type: 'custom',
+          message: 'Username must be unique',
+        });
+      }
+
+      if (message.includes('email')) {
+        setError('email', { type: 'custom', message: 'Email must be unique' });
+      }
+    }
   });
 
   return (
@@ -86,22 +119,15 @@ const Signup = () => {
           placeholder='Repeat password'
           id='repeat-password'
           register={{
-            ...register('confirmPassword', {
+            ...register('repeatPassword', {
               required: 'Repeating password is required',
               validate: (value) => {
                 return value === watch('password') || 'Passwords must match';
               },
             }),
           }}
-          error={errors?.confirmPassword?.message}
-          isTouched={touchedFields?.confirmPassword}
-        />
-        <CheckBox
-          label='Remember this device'
-          id='remember-device'
-          register={{
-            ...register('rememberDevice'),
-          }}
+          error={errors?.repeatPassword?.message}
+          isTouched={touchedFields?.repeatPassword}
         />
         <Button type='submit' value='Sign Up' />
       </form>
