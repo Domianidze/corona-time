@@ -39,7 +39,12 @@ const Signup = () => {
 
       navigate('/notification/send-email');
     } catch (err: any) {
-      const message = err?.response.data[0].message;
+      const message = err?.response?.data[0]?.message;
+
+      if (!message) {
+        console.error(err);
+        return;
+      }
 
       if (message.includes('username')) {
         setError('username', {

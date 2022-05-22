@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useForm } from 'react-hook-form';
 
@@ -7,17 +9,61 @@ import Input from 'components/Input';
 import CheckBox from 'components/CheckBox';
 import Button from 'components/Button';
 
+import { API_URL } from 'config/api';
+
 const Login = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors, touchedFields },
+    setError,
   } = useForm({
     mode: 'onTouched',
   });
 
-  const loginHandler = handleSubmit((data) => {
-    console.log(data);
+  const loginHandler = handleSubmit(async (data) => {
+    try {
+      const requestData = {
+        username: data.username,
+        password: data.password,
+      };
+
+      const response = await axios.post(`${API_URL}/login`, requestData, {
+        headers: {
+          accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const token = response.data.token;
+      console.log(token);
+
+      navigate('/landing');
+    } catch (err: any) {
+      const message =
+        err?.response?.data[0]?.message || err?.response?.data?.message;
+
+      if (!message) {
+        console.error(err);
+        return;
+      }
+
+      if (message.includes('username')) {
+        setError('username', {
+          type: 'custom',
+          message: 'Username must exist',
+        });
+      }
+
+      if (message.includes('credentials')) {
+        setError('password', {
+          type: 'custom',
+          message: 'Password must be valid',
+        });
+      }
+    }
   });
 
   return (
