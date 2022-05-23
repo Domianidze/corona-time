@@ -1,93 +1,44 @@
+import { useOutletContext } from 'react-router-dom';
+
 import SearchInput from './components/SearchInput';
 import Table from './components/Table';
 
+import { getTotals } from 'pages/Worldwide/helpers/helper-functions';
+
 const ByCountry = () => {
-  const DUMMY_HEADERS = [
+  const countries: any[] = useOutletContext();
+  const totals = getTotals(countries);
+
+  const headers = [
     { title: 'Location' },
     { title: 'New Cases' },
     { title: 'Deaths' },
     { title: 'Recovered' },
   ];
 
-  const DUMMY_BODY = [
+  const formattedCountries = countries.map((country) => {
+    return {
+      location: country.name.en,
+      newCases: country.statistics.confirmed,
+      deaths: country.statistics.deaths,
+      recovered: country.statistics.recovered,
+    };
+  });
+
+  const body = [
     {
       location: 'Worldwide',
-      newCases: '9,704,000',
-      deaths: '66,591',
-      recovered: '5,803,905',
+      newCases: totals.newCases,
+      deaths: totals.death,
+      recovered: totals.recovered,
     },
-    {
-      location: 'Albania',
-      newCases: '6,704,000',
-      deaths: '33,591',
-      recovered: '1,803,905',
-    },
-    {
-      location: 'Algeria',
-      newCases: '3,704,000',
-      deaths: '11,591',
-      recovered: '803,905',
-    },
-    {
-      location: 'Andora',
-      newCases: '9,704,000',
-      deaths: '66,591',
-      recovered: '5,803,905',
-    },
-    {
-      location: 'Albania',
-      newCases: '6,704,000',
-      deaths: '33,591',
-      recovered: '1,803,905',
-    },
-    {
-      location: 'Algeria',
-      newCases: '3,704,000',
-      deaths: '11,591',
-      recovered: '803,905',
-    },
-    {
-      location: 'Andora',
-      newCases: '9,704,000',
-      deaths: '66,591',
-      recovered: '5,803,905',
-    },
-    {
-      location: 'Albania',
-      newCases: '6,704,000',
-      deaths: '33,591',
-      recovered: '1,803,905',
-    },
-    {
-      location: 'Algeria',
-      newCases: '3,704,000',
-      deaths: '11,591',
-      recovered: '803,905',
-    },
-    {
-      location: 'Andora',
-      newCases: '9,704,000',
-      deaths: '66,591',
-      recovered: '5,803,905',
-    },
-    {
-      location: 'Albania',
-      newCases: '6,704,000',
-      deaths: '33,591',
-      recovered: '1,803,905',
-    },
-    {
-      location: 'Algeria',
-      newCases: '3,704,000',
-      deaths: '11,591',
-      recovered: '803,905',
-    },
+    ...formattedCountries,
   ];
 
   return (
     <div className='w-full'>
       <SearchInput id='table-search' placeholder='Search by country' />
-      <Table headers={DUMMY_HEADERS} body={DUMMY_BODY} />
+      <Table headers={headers} body={body} />
     </div>
   );
 };

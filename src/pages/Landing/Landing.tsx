@@ -1,9 +1,21 @@
+import { useState, useEffect, useContext } from 'react';
+
+import axios from 'axios';
+
+import AuthContext from 'store/AuthContext';
+
 import { Outlet, useLocation, NavLink } from 'react-router-dom';
 
 import Layout from './components/Layout';
 import Title from 'components/Title';
 
+import { API_URL } from 'config/api';
+
 const Landing = () => {
+  const [countries, setCountries] = useState<any>([]);
+
+  const authCtx = useContext(AuthContext);
+
   const location = useLocation();
 
   let title = 'Worldwide Statistcs';
@@ -12,6 +24,24 @@ const Landing = () => {
   if (location.pathname === '/landing/by-country') {
     title = 'Statistics by country';
   }
+
+  useEffect(() => {
+    if (!authCtx.token) return;
+
+    const getCountries = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/countries`, {
+          headers: { Authorization: `Bearer ${authCtx.token}` },
+        });
+
+        setCountries(response?.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    getCountries();
+  }, [authCtx.token]);
 
   return (
     <Layout>
@@ -36,7 +66,7 @@ const Landing = () => {
           </NavLink>
         </ul>
       </div>
-      <Outlet />
+      <Outlet context={countries} />
     </Layout>
   );
 };
