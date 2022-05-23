@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import { useOutletContext } from 'react-router-dom';
 
@@ -7,11 +7,12 @@ import Table from './components/Table';
 
 import { SortKeys } from './types/sort-types';
 
-import { getTotals } from 'pages/Worldwide/helpers/helper-functions';
+import { getTotals } from 'helpers/helper-functions';
 
 const ByCountry = () => {
   const [sortKey, setSortKey] = useState<SortKeys>('location');
   const [sortOrder, setSortOrder] = useState<'ascn' | 'desc'>('ascn');
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   const sortHandler = (key: SortKeys) => {
     if (sortKey === key) {
@@ -21,6 +22,10 @@ const ByCountry = () => {
     } else {
       setSortKey(key);
     }
+  };
+
+  const searchHandler = (e: { target: HTMLInputElement }) => {
+    setSearchQuery(e.target.value);
   };
 
   const countries: any[] = useOutletContext();
@@ -42,13 +47,19 @@ const ByCountry = () => {
     };
   });
 
-  const filteredCountries = formattedCountries.sort((a, b) => {
+  let filteredCountries = formattedCountries.sort((a, b) => {
     if (sortOrder === 'desc') {
       return a[sortKey] < b[sortKey] ? 1 : -1;
     } else {
       return a[sortKey] > b[sortKey] ? 1 : -1;
     }
   });
+
+  if (searchQuery.length > 0) {
+    filteredCountries = filteredCountries.filter((country) => {
+      return country.location.toLowerCase().includes(searchQuery.toLowerCase());
+    });
+  }
 
   const data = [
     {
@@ -62,7 +73,12 @@ const ByCountry = () => {
 
   return (
     <div className='w-full'>
-      <SearchInput id='table-search' placeholder='Search by country' />
+      <SearchInput
+        id='table-search'
+        value={searchQuery}
+        placeholder='Search by country'
+        onChange={searchHandler}
+      />
       <Table
         columns={columns}
         data={data}

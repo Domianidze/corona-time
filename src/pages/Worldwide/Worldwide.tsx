@@ -2,7 +2,7 @@ import { useOutletContext } from 'react-router-dom';
 
 import Card from './components/Card';
 
-import { getTotals } from './helpers/helper-functions';
+import { getTotals } from 'helpers/helper-functions';
 
 const Worldwide = () => {
   const countries: any[] = useOutletContext();
