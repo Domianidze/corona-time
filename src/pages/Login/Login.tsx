@@ -8,6 +8,8 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { useForm } from 'react-hook-form';
 
+import { useTranslation } from 'react-i18next';
+
 import WelcomeText from 'components/WelcomeText';
 import Input from 'components/Input';
 import CheckBox from 'components/CheckBox';
@@ -16,6 +18,8 @@ import Button from 'components/Button';
 import { API_URL } from 'config/api';
 
 const Login = () => {
+  const { t } = useTranslation();
+
   const authCtx = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -73,22 +77,19 @@ const Login = () => {
 
   return (
     <div className='w-fit'>
-      <WelcomeText
-        main='Welcome back'
-        secondary='Welcome back! Please enter your details'
-      />
-      <form onSubmit={loginHandler}>
+      <WelcomeText main={t('loginTitle')} secondary={t('loginParagraph')} />
+      <form className='max-w-sm' onSubmit={loginHandler}>
         <Input
-          label='Username'
+          label={t('loginUsernameLabel')}
           type='text'
-          placeholder='Enter unique username or email'
+          placeholder={t('loginUsernamePlaceholder')}
           id='username'
           register={{
             ...register('username', {
-              required: 'Username is required',
+              required: t('usernameRequired'),
               minLength: {
                 value: 3,
-                message: 'Username has to contain at least 3 symbols',
+                message: t('usernameMinLength'),
               },
             }),
           }}
@@ -96,16 +97,16 @@ const Login = () => {
           isTouched={touchedFields?.username}
         />
         <Input
-          label='Password'
+          label={t('passwordLabel')}
           type='password'
-          placeholder='Fill in password'
+          placeholder={t('passwordPlaceholder')}
           id='password'
           register={{
             ...register('password', {
-              required: 'Password is required',
+              required: t('passwordRequired'),
               minLength: {
                 value: 3,
-                message: 'Password has to containt at least 3 symbols',
+                message: t('passwordMinLength'),
               },
             }),
           }}
@@ -114,23 +115,23 @@ const Login = () => {
         />
         <div className='w-96 flex justify-between items-center'>
           <CheckBox
-            label='Remember this device'
+            label={t('rememberDevice')}
             id='remember-device'
             register={{ ...register('rememberDevice') }}
           />
           <Link
             to='/reset/reset-password'
-            className='text-sm font-semibold text-brand/primary'
+            className='text-sm font-semibold text-brand/primary text-right'
           >
-            Forgot Password?
+            {t('forgotPassword')}
           </Link>
         </div>
-        <Button type='submit' value='Log In' />
+        <Button type='submit' value={t('login')} />
       </form>
-      <p className='text-dark/60 text-center'>
-        Don't have an account?{' '}
+      <p className='text-dark/60 text-center max-w-sm'>
+        {t('dontHaveAccount')}{' '}
         <Link to='/authentication/signup' className='text-dark/100 font-bold'>
-          Sign up for free
+          {t('signupFree')}
         </Link>
       </p>
     </div>

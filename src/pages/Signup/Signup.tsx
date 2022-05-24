@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { useForm } from 'react-hook-form';
 
+import { useTranslation } from 'react-i18next';
+
 import WelcomeText from 'components/WelcomeText';
 import Input from 'components/Input';
 import Button from 'components/Button';
@@ -11,6 +13,8 @@ import Button from 'components/Button';
 import { API_URL, SIGN_UP_CONFIRM_URL } from 'config/api';
 
 const Signup = () => {
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
 
   const {
@@ -61,23 +65,20 @@ const Signup = () => {
 
   return (
     <div className='w-fit'>
-      <WelcomeText
-        main='Welcome to Coronatime'
-        secondary='Please enter required info to sign up'
-      />
-      <form onSubmit={signupHandler}>
+      <WelcomeText main={t('signupTitle')} secondary={t('signupParagraph')} />
+      <form className='max-w-sm' onSubmit={signupHandler}>
         <Input
-          label='Username'
+          label={t('signupUsernameLabel')}
           type='text'
-          placeholder='Enter unique username'
-          note='Username should be unique, min 3 symbols'
+          placeholder={t('signupUsernamePlaceholder')}
+          note={t('signupUsernameNote')}
           id='username'
           register={{
             ...register('username', {
-              required: 'Username is required',
+              required: t('usernameRequired'),
               minLength: {
                 value: 3,
-                message: 'Username has to contain at least 3 symbols',
+                message: t('usernameMinLength'),
               },
             }),
           }}
@@ -85,16 +86,16 @@ const Signup = () => {
           isTouched={touchedFields?.username}
         />
         <Input
-          label='Email'
+          label={t('emailLabel')}
           type='email'
-          placeholder='Enter your email'
+          placeholder={t('emailPlaceholder')}
           id='email'
           register={{
             ...register('email', {
-              required: 'Email is required',
+              required: t('emailRequired'),
               pattern: {
                 value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-                message: 'Email must be valid',
+                message: t('emailValid'),
               },
             }),
           }}
@@ -102,16 +103,16 @@ const Signup = () => {
           isTouched={touchedFields?.email}
         />
         <Input
-          label='Password'
+          label={t('passwordLabel')}
           type='password'
-          placeholder='Fill in password'
+          placeholder={t('passwordPlaceholder')}
           id='password'
           register={{
             ...register('password', {
-              required: 'Password is required',
+              required: t('passwordRequired'),
               minLength: {
                 value: 3,
-                message: 'Password has to contain at least 3 symbols',
+                message: t('passwordMinLength'),
               },
             }),
           }}
@@ -119,27 +120,27 @@ const Signup = () => {
           isTouched={touchedFields?.password}
         />
         <Input
-          label='Repeat Password'
+          label={t('repeatPasswordLabel')}
           type='password'
-          placeholder='Repeat password'
+          placeholder={t('repeatPasswordPlaceholder')}
           id='repeat-password'
           register={{
             ...register('repeatPassword', {
-              required: 'Repeating password is required',
+              required: t('repeatPasswordRequired'),
               validate: (value) => {
-                return value === watch('password') || 'Passwords must match';
+                return value === watch('password') || t('passwordsMatch');
               },
             }),
           }}
           error={errors?.repeatPassword?.message}
           isTouched={touchedFields?.repeatPassword}
         />
-        <Button type='submit' value='Sign Up' />
+        <Button type='submit' value={t('signupButton')} />
       </form>
-      <p className='text-dark/60 text-center'>
-        Already have an account?{' '}
+      <p className='text-dark/60 text-center max-w-sm'>
+        {t('alreadyHaveAccount')}{' '}
         <Link to='/authentication/login' className='text-dark/100 font-bold'>
-          Log In
+          {t('login')}
         </Link>
       </p>
     </div>

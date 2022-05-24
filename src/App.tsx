@@ -1,7 +1,11 @@
 import { useContext, useEffect } from 'react';
+
 import AuthContext from 'store/AuthContext';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
+
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 import {
   Authentication,
@@ -20,6 +24,11 @@ import {
 } from 'pages';
 
 const App = () => {
+  const { t } = useTranslation();
+  if (!t) console.log('Localization not working');
+
+  const lang = i18next.language;
+
   const authCtx = useContext(AuthContext);
   const isLoggedIn = !!localStorage.getItem('token') || authCtx.isLoggedIn;
 
@@ -41,7 +50,11 @@ const App = () => {
   }
 
   return (
-    <div className='App font-inter text-dark/100'>
+    <div
+      className={`App ${
+        lang === 'ge' ? 'font-firaGO' : 'font-inter'
+      } text-dark/100`}
+    >
       <Routes>
         <Route path='/authentication' element={<Authentication />}>
           <Route path='signup' element={<Signup />} />

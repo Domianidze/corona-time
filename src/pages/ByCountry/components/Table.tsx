@@ -22,15 +22,15 @@ const Table: React.FC<{
     <div className='my-10 w-full h-130 border border-dark/4 rounded-lg shadow-sm overflow-hidden'>
       <table className='w-full h-full'>
         <thead className='h-14 bg-dark/4'>
-          <tr className='table w-200 h-full'>
+          <tr className='w-200 h-full flex'>
             {props.columns.map((header) => {
               return (
                 <th
-                  className='px-8 w-48'
+                  className='px-8 w-48 flex'
                   onClick={props.onSort.bind(null, header.accessor)}
                   key={header.header}
                 >
-                  <p className='flex items-center text-sm font-semibold pr-3 cursor-pointer'>
+                  <p className='flex items-center text-sm font-semibold text-left cursor-pointer'>
                     {header.header}{' '}
                     {header.accessor === props.sortKey ? (
                       <img
@@ -59,10 +59,10 @@ const Table: React.FC<{
           {props.data.map((country) => {
             return (
               <React.Fragment key={country.location}>
-                <tr className='table w-200 h-14 align-middle'>
+                <tr className='w-200 h-14 align-middle'>
                   {Object.entries(country).map((value) => {
                     return (
-                      <td className='px-8 w-48' key={value[0]}>
+                      <td className='px-8 w-48 h-full' key={value[0]}>
                         {value[1]}
                       </td>
                     );

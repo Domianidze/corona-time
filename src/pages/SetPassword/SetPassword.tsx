@@ -8,6 +8,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useForm } from 'react-hook-form';
 
+import { useTranslation } from 'react-i18next';
+
 import Title from 'components/Title';
 import Input from 'components/Input';
 import Button from 'components/Button';
@@ -15,6 +17,8 @@ import Button from 'components/Button';
 import { API_URL } from 'config/api';
 
 const SetPassword = () => {
+  const { t } = useTranslation();
+
   const authCtx = useContext(AuthContext);
 
   const location = useLocation();
@@ -54,19 +58,19 @@ const SetPassword = () => {
 
   return (
     <form onSubmit={setPasswordHandler}>
-      <Title value='Reset Password' className='text-center' />
+      <Title value={t('resetPassword')} className='text-center' />
       <Input
         type='password'
-        label='New password'
-        placeholder='Enter new password'
+        label={t('newPasswordLabel')}
+        placeholder={t('newPasswordPlaceholder')}
         id='password'
         classname='pt-10'
         register={{
           ...register('password', {
-            required: 'Password is required',
+            required: t('passwordRequired'),
             minLength: {
               value: 3,
-              message: 'Password has to contain at least 3 symbols',
+              message: t('passwordMinLength'),
             },
           }),
         }}
@@ -75,22 +79,22 @@ const SetPassword = () => {
       />
       <Input
         type='password'
-        label=' password'
-        placeholder='Repeat password'
+        label={t('repeatPasswordLabel')}
+        placeholder={t('repeatPasswordPlaceholder')}
         id='repeat-password'
         classname='pb-10'
         register={{
           ...register('repeatPassword', {
-            required: 'Repeating password is required',
+            required: t('repeatPasswordRequired'),
             validate: (value) => {
-              return value === watch('password') || 'Passwords must match';
+              return value === watch('password') || t('passwordsMatch');
             },
           }),
         }}
         error={errors?.repeatPassword?.message}
         isTouched={touchedFields?.repeatPassword}
       />
-      <Button type='submit' value='Save Changes' />
+      <Button type='submit' value={t('saveChanges')} />
     </form>
   );
 };

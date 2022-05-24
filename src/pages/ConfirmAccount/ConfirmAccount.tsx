@@ -4,12 +4,16 @@ import axios from 'axios';
 
 import { Link, useLocation } from 'react-router-dom';
 
+import { useTranslation } from 'react-i18next';
+
 import SuccessImg from 'assets/img/icons/success-big.png';
 import Button from 'components/Button';
 
 import { API_URL } from 'config/api';
 
 const ConfirmAccount = () => {
+  const { t } = useTranslation();
+
   const location = useLocation();
   const hash = location.search.replace('?hash=', '');
 
@@ -38,12 +42,12 @@ const ConfirmAccount = () => {
     <div>
       <div className='mb-14 flex justify-center items-center flex-col'>
         <img src={SuccessImg} alt='success' />
-        <p className='py-3 text-lg'>
-          Your account is confirmed, you can sign in
+        <p className='py-3 text-lg max-w-sm text-center'>
+          {t('confirmAccount')}
         </p>
       </div>
       <Link to='/authentication/login'>
-        <Button type='button' value='Sign In' />
+        <Button type='button' value={t('signin')} />
       </Link>
     </div>
   );

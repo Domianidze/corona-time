@@ -1,12 +1,36 @@
 import ReactDOM from 'react-dom/client';
 
-import { AuthContextProvider } from 'store/AuthContext';
-
 import { BrowserRouter } from 'react-router-dom';
 
-import App from './App';
+import { AuthContextProvider } from 'store/AuthContext';
 
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+
+import { translationsEn } from 'translations/translationsEn';
+import { translationsGe } from 'translations/translationsGe';
+
+import App from './App';
 import './index.css';
+
+const savedLang = localStorage.getItem('lang');
+
+i18n.use(initReactI18next).init({
+  resources: {
+    en: {
+      translation: translationsEn,
+    },
+    ge: {
+      translation: translationsGe,
+    },
+  },
+  lng: savedLang ? savedLang : 'en',
+  fallbackLng: 'en',
+
+  interpolation: {
+    escapeValue: false,
+  },
+});
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

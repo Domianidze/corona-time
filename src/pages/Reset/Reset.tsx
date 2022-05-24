@@ -1,5 +1,7 @@
 import { Outlet } from 'react-router-dom';
 
+import LangSelect from 'components/LangSelect';
+
 import LogoImg from 'assets/img/logo.png';
 
 const Reset = () => {
@@ -11,6 +13,7 @@ const Reset = () => {
       <div className='w-full h-full flex justify-center items-center'>
         <Outlet />
       </div>
+      <LangSelect className='absolute top-10 right-10 rounded-md' />
     </div>
   );
 };

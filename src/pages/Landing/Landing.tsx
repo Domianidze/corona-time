@@ -6,23 +6,27 @@ import AuthContext from 'store/AuthContext';
 
 import { Outlet, useLocation, NavLink } from 'react-router-dom';
 
+import { useTranslation } from 'react-i18next';
+
 import Layout from './components/Layout';
 import Title from 'components/Title';
 
 import { API_URL } from 'config/api';
 
 const Landing = () => {
+  const { t } = useTranslation();
+
   const [countries, setCountries] = useState<any>([]);
 
   const authCtx = useContext(AuthContext);
 
   const location = useLocation();
 
-  let title = 'Worldwide Statistcs';
+  let title = t('worldwideStatistics');
   let activeClass = 'font-bold border-b-[3px] border-dark/100';
 
   if (location.pathname === '/landing/by-country') {
-    title = 'Statistics by country';
+    title = t('statisticsByCountry');
   }
 
   useEffect(() => {
@@ -54,7 +58,7 @@ const Landing = () => {
               return isActive ? `mr-16 pb-3 ${activeClass}` : 'mr-16';
             }}
           >
-            Worldwide
+            {t('worldwide')}
           </NavLink>
           <NavLink
             to='/landing/by-country'
@@ -62,7 +66,7 @@ const Landing = () => {
               return isActive ? `pb-3 ${activeClass}` : 'pb-3';
             }}
           >
-            By country
+            {t('byCountry')}
           </NavLink>
         </ul>
       </div>

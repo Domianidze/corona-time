@@ -52,7 +52,7 @@ const Input: React.FC<{
       {props.error && (
         <div className='pt-1 flex items-center'>
           <img src={ErrorImg} alt='error' />
-          <p className='pl-2 text-sm font-medium text-system/error'>
+          <p className='pl-2 text-sm font-medium text-system/error whitespace-nowrap'>
             {props.error}
           </p>
         </div>

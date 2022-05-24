@@ -3,26 +3,27 @@ import RecoveredImg from 'assets/img/charts/recovered.png';
 import DeathImg from 'assets/img/charts/death.png';
 
 const Card: React.FC<{
-  title: 'New Cases' | 'Recovered' | 'Death';
+  type: 'newCases' | 'recovered' | 'deaths';
+  title: string;
   amount: string;
 }> = (props) => {
   let graph;
   let bgColor;
   let textColor;
 
-  if (props.title === 'New Cases') {
+  if (props.type === 'newCases') {
     graph = NewCasesImg;
     bgColor = 'bg-brand/primary';
     textColor = 'text-brand/primary';
   }
 
-  if (props.title === 'Recovered') {
+  if (props.type === 'recovered') {
     graph = RecoveredImg;
     bgColor = 'bg-brand/secondary';
     textColor = 'text-brand/secondary';
   }
 
-  if (props.title === 'Death') {
+  if (props.type === 'deaths') {
     graph = DeathImg;
     bgColor = 'bg-brand/teritary';
     textColor = 'text-brand/teritary';

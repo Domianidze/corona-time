@@ -21,6 +21,7 @@ module.exports = {
       },
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
+        firaGO: ['firaGO', 'sans-serif'],
       },
       fontSize: {
         '2.1xl': '1.55rem',

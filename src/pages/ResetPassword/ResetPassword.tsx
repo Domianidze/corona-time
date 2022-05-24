@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { useForm } from 'react-hook-form';
 
+import { useTranslation } from 'react-i18next';
+
 import Title from 'components/Title';
 import Input from 'components/Input';
 import Button from 'components/Button';
@@ -11,6 +13,8 @@ import Button from 'components/Button';
 import { API_URL, RECOVER_PASSWORD_URL } from 'config/api';
 
 const ResetPassword = () => {
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
 
   const {
@@ -43,26 +47,26 @@ const ResetPassword = () => {
 
   return (
     <form onSubmit={resetPasswordHandler}>
-      <Title value='Reset Password' className='text-center' />
+      <Title value={t('resetPassword')} className='text-center' />
       <Input
         type='email'
-        label='Email'
-        placeholder='Enter your email'
+        label={t('emailLabel')}
+        placeholder={t('emailPlaceholder')}
         id='email'
         classname='py-10'
         register={{
           ...register('email', {
-            required: 'Email is required',
+            required: t('emailRequired'),
             pattern: {
               value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-              message: 'Email must be valid',
+              message: t('emailValid'),
             },
           }),
         }}
         error={errors?.email?.message}
         isTouched={touchedFields?.email}
       />
-      <Button type='submit' value='Reset Password' />
+      <Button type='submit' value={t('resetPassword')} />
     </form>
   );
 };

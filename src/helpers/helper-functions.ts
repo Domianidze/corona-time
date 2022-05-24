@@ -11,7 +11,7 @@ export const getTotals = (countries: any[]) => {
     }, 0)
     .toLocaleString();
 
-  const death = countries
+  const deaths = countries
     .reduce((prev, cur) => {
       return prev + cur.statistics.deaths;
     }, 0)
@@ -20,6 +20,6 @@ export const getTotals = (countries: any[]) => {
   return {
     newCases,
     recovered,
-    death,
+    deaths,
   };
 };
