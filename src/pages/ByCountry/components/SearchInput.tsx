@@ -7,7 +7,7 @@ const SearchInput: React.FC<{
   onChange: (e: { target: HTMLInputElement }) => void;
 }> = (props) => {
   return (
-    <div className='relative'>
+    <div className='relative w-full'>
       <img
         src={SearchImg}
         alt='search'
@@ -20,7 +20,7 @@ const SearchInput: React.FC<{
         value={props.value}
         placeholder={props.placeholder}
         onChange={props.onChange}
-        className='form-input pl-16 w-60 h-12 font-medium border !border-dark/20 rounded-lg'
+        className='form-input pl-16 w-full h-12 font-medium border !border-dark/20 rounded-lg md:w-60'
       />
     </div>
   );

@@ -7,17 +7,17 @@ import CovidImg from 'assets/img/covid.png';
 
 const Authentication = () => {
   return (
-    <div className='relative w-full h-screen'>
-      <div className='py-7 px-28'>
+    <div className='relative w-full min-h-screen flex justify-center items-center sm:block'>
+      <div className='relative max-w-sm sm:static py-7 sm:px-28 sm:max-w-none'>
         <img src={LogoImg} alt='logo' className='pb-14'></img>
+        <LangSelect className='absolute top-7 right-0 rounded-md z-10 sm:right-7' />
         <Outlet />
       </div>
       <img
         src={CovidImg}
         alt='covid'
-        className='absolute top-0 right-0 h-full'
+        className='hidden absolute top-0 right-0 h-full 2lg:block'
       ></img>
-      <LangSelect className='absolute top-10 right-10 rounded-md' />
     </div>
   );
 };

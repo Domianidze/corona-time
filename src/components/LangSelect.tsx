@@ -13,7 +13,7 @@ const LangSelect: React.FC<{ className?: string }> = (props) => {
       name='language'
       id='language'
       defaultValue={lang}
-      className={`form-select ${props.className}`}
+      className={`form-select w-20 ${props.className}`}
       onChange={langChangeHandler}
     >
       <option value='en'>English</option>

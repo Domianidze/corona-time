@@ -19,7 +19,7 @@ const Table: React.FC<{
   onSort: (key: SortKeys) => void;
 }> = (props) => {
   return (
-    <div className='my-10 w-full h-130 border border-dark/4 rounded-lg shadow-sm overflow-hidden'>
+    <div className='mt-5 w-full h-[calc(100vh-19rem)] border border-dark/4 rounded-lg shadow-sm overflow-x-auto md:my-10 md:h-[calc(100vh-26rem)]'>
       <table className='w-full h-full'>
         <thead className='h-14 bg-dark/4'>
           <tr className='w-200 h-full flex'>

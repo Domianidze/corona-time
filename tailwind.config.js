@@ -27,6 +27,10 @@ module.exports = {
         '2.1xl': '1.55rem',
         '4.2xl': '2.4rem',
       },
+      screens: {
+        '2lg': '1175px',
+        '1/2xl': '1425px',
+      },
     },
   },
   plugins: [require('@tailwindcss/custom-forms')],

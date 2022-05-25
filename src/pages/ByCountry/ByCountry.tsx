@@ -15,7 +15,6 @@ import { getTotals } from 'helpers/helper-functions';
 const ByCountry = () => {
   const { t } = useTranslation();
   const lang = i18next.language;
-  console.log(lang);
 
   const [sortKey, setSortKey] = useState<SortKeys>('location');
   const [sortOrder, setSortOrder] = useState<'ascn' | 'desc'>('ascn');

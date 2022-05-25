@@ -14,8 +14,13 @@ const Worldwide = () => {
   const totals = getTotals(countries);
 
   return (
-    <div className='w-full flex justify-between'>
-      <Card type='newCases' title={t('newCases')} amount={totals.newCases} />
+    <div className='w-full flex justify-between flex-wrap md:flex-nowrap'>
+      <Card
+        type='newCases'
+        title={t('newCases')}
+        amount={totals.newCases}
+        className='!w-full md:!w-96'
+      />
       <Card type='recovered' title={t('recovered')} amount={totals.recovered} />
       <Card type='deaths' title={t('deaths')} amount={totals.deaths} />
     </div>

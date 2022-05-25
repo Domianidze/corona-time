@@ -49,8 +49,8 @@ const Landing = () => {
 
   return (
     <Layout>
-      <div className='mb-10 pb-3 border-b border-dark/6'>
-        <Title value={title} className='py-10' />
+      <div className='mb-5 pb-3 border-b border-dark/6 md:mb-10'>
+        <Title value={title} className='py-5 md:py-10' />
         <ul>
           <NavLink
             to='/landing/worldwide'

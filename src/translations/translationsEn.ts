@@ -45,7 +45,7 @@ export const translationsEn = {
 
   // Landing Titles
   worldwideStatistics: 'Worldwide Statistics',
-  statisticsByCountry: 'Statistics by Country',
+  statisticsByCountry: 'Statistics By Country',
   worldwide: 'Worldwide',
   byCountry: 'By Country',
 

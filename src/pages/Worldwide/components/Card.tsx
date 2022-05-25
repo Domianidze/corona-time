@@ -6,6 +6,7 @@ const Card: React.FC<{
   type: 'newCases' | 'recovered' | 'deaths';
   title: string;
   amount: string;
+  className?: string;
 }> = (props) => {
   let graph;
   let bgColor;
@@ -31,11 +32,15 @@ const Card: React.FC<{
 
   return (
     <div
-      className={`w-96 h-64 flex justify-center items-center flex-col ${bgColor} bg-opacity-10 rounded-2xl`}
+      className={`w-1/2 h-56 flex justify-center items-center flex-col ${bgColor} bg-opacity-10 rounded-2xl border-8 border-white md:w-96 md:h-64 ${props.className}`}
     >
       <img src={graph} alt='graph' />
-      <p className='py-3 text-xl font-medium'>{props.title}</p>
-      <p className={`text-4.2xl font-black ${textColor}`}>{props.amount}</p>
+      <p className='py-3 px-1 text-lg font-medium md:text-xl max-w-full break-words text-center'>
+        {props.title}
+      </p>
+      <p className={`text-3xl font-black md:text-4.2xl ${textColor}`}>
+        {props.amount}
+      </p>
     </div>
   );
 };
