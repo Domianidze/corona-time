@@ -25,6 +25,7 @@ import {
 
 const App = () => {
   const { t } = useTranslation();
+  console.log(t('applicationRunning'));
 
   const lang = i18next.language;
 

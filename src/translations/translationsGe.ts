@@ -1,4 +1,6 @@
 export const translationsGe = {
+  applicationRunning: 'აპლიკაცია მუშაობს!',
+
   // Authentication
   passwordLabel: 'პაროლი',
   passwordPlaceholder: 'შეიყვანეთ პაროლი',

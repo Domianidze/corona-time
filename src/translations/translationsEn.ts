@@ -1,4 +1,6 @@
 export const translationsEn = {
+  applicationRunning: 'Application running!',
+
   // Authentication
   passwordLabel: 'Password',
   passwordPlaceholder: 'Fill in password',
