@@ -58,7 +58,7 @@ export const translationsEn = {
   // By Country
   searchByCountry: 'Search by country',
 
-  // Errors
+  // Hook Form Errors
   usernameRequired: 'Username is required',
   usernameMinLength: 'Username has to contain at least 3 symbols',
   emailRequired: 'Email is required',
@@ -66,5 +66,12 @@ export const translationsEn = {
   passwordRequired: 'Password is required',
   passwordMinLength: 'Password has to contain at least 3 symbols',
   repeatPasswordRequired: 'Repeating password is required',
-  passwordsMatch: 'Password must match',
+  passwordsMatch: 'Passwords must match',
+
+  // Api Errors
+  usernameTaken: 'Username is already taken',
+  emailTaken: 'Email is already taken',
+  usernameNoUser: 'There is no user with such username',
+  emailNoUser: 'There is no user with such email',
+  passwordInvalid: 'Password is not valid',
 };

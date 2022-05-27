@@ -1,0 +1,67 @@
+[
+    {
+        "name": {
+            "en": "Afghanistan",
+            "ka": "ავღანეთი"
+        },
+        "statistics": {
+            "confirmed": 3401,
+            "recovered": 2523,
+            "critical": 1598,
+            "deaths": 1474
+        },
+        "_id": "628360785af42d12eef05c44"
+    },
+    {
+        "name": {
+            "en": "Bangladesh",
+            "ka": "ბანგლადეში"
+        },
+        "statistics": {
+            "confirmed": 4486,
+            "recovered": 4869,
+            "critical": 362,
+            "deaths": 298
+        },
+        "_id": "628360785af42d12eef05c4c"
+    },
+    {
+        "name": {
+            "en": "Canada",
+            "ka": "კანადა"
+        },
+        "statistics": {
+            "confirmed": 4524,
+            "recovered": 1012,
+            "critical": 87,
+            "deaths": 3378
+        },
+        "_id": "628360785af42d12eef05c50"
+    },
+    {
+        "name": {
+            "en": "Ecuador",
+            "ka": "ეკვადორი"
+        },
+        "statistics": {
+            "confirmed": 30,
+            "recovered": 2461,
+            "critical": 1169,
+            "deaths": 2008
+        },
+        "_id": "628360785af42d12eef05c59"
+    },
+    {
+        "name": {
+            "en": "Fiji",
+            "ka": "ფიჯი"
+        },
+        "statistics": {
+            "confirmed": 3084,
+            "recovered": 2157,
+            "critical": 4498,
+            "deaths": 4205
+        },
+        "_id": "628360785af42d12eef05c5d"
+    }
+]

@@ -21,6 +21,7 @@ const ResetPassword = () => {
     register,
     handleSubmit,
     formState: { errors, touchedFields },
+    setError,
   } = useForm({
     mode: 'onTouched',
   });
@@ -40,8 +41,18 @@ const ResetPassword = () => {
       });
 
       navigate('/notification/send-email');
-    } catch (err) {
-      console.error(err);
+    } catch (err: any) {
+      const error = err?.response?.data;
+
+      if (!error) {
+        console.error(err);
+        return;
+      }
+
+      setError('email', {
+        type: 'custom',
+        message: t('emailNoUser'),
+      });
     }
   });
 
@@ -66,7 +77,11 @@ const ResetPassword = () => {
         error={errors?.email?.message}
         isTouched={touchedFields?.email}
       />
-      <Button type='submit' value={t('resetPassword')} />
+      <Button
+        type='submit'
+        value={t('resetPassword')}
+        id='reset-password-button'
+      />
     </form>
   );
 };

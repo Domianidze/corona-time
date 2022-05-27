@@ -25,7 +25,6 @@ import {
 
 const App = () => {
   const { t } = useTranslation();
-  if (!t) console.log('Localization not working');
 
   const lang = i18next.language;
 

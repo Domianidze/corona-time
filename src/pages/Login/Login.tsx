@@ -51,25 +51,26 @@ const Login = () => {
 
       navigate('/landing');
     } catch (err: any) {
-      const message =
-        err?.response?.data[0]?.message || err?.response?.data?.message;
+      const error = err?.response?.data;
 
-      if (!message) {
+      if (!error) {
         console.error(err);
         return;
       }
 
+      const message = error[0].message;
+
       if (message.includes('username')) {
         setError('username', {
           type: 'custom',
-          message: 'Username must exist',
+          message: t('usernameNoUser'),
         });
       }
 
       if (message.includes('credentials')) {
         setError('password', {
           type: 'custom',
-          message: 'Password must be valid',
+          message: t('passwordInvalid'),
         });
       }
     }
@@ -122,15 +123,20 @@ const Login = () => {
           <Link
             to='/reset/reset-password'
             className='text-sm font-semibold text-brand/primary text-right'
+            id='forgot-password-button'
           >
             {t('forgotPassword')}
           </Link>
         </div>
-        <Button type='submit' value={t('login')} />
+        <Button type='submit' value={t('login')} id='login-button' />
       </form>
       <p className='text-dark/60 text-center max-w-sm'>
         {t('dontHaveAccount')}{' '}
-        <Link to='/authentication/signup' className='text-dark/100 font-bold'>
+        <Link
+          to='/authentication/signup'
+          className='text-dark/100 font-bold'
+          id='signup-free-button'
+        >
           {t('signupFree')}
         </Link>
       </p>

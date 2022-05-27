@@ -38,6 +38,7 @@ const Landing = () => {
           headers: { Authorization: `Bearer ${authCtx.token}` },
         });
 
+        console.log(response.data);
         setCountries(response?.data);
       } catch (err) {
         console.error(err);
@@ -65,6 +66,7 @@ const Landing = () => {
             className={({ isActive }) => {
               return isActive ? `pb-3 ${activeClass}` : 'pb-3';
             }}
+            id='by-country-button'
           >
             {t('byCountry')}
           </NavLink>

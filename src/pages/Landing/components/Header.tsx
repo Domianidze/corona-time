@@ -39,6 +39,7 @@ const Header: React.FC = () => {
               type='button'
               className='pl-4 md:hidden'
               onClick={menuToggleHandler}
+              id='menu-button'
             >
               <img src={MenuImg} alt='menu' />
             </button>
@@ -49,7 +50,9 @@ const Header: React.FC = () => {
         <div className='absolute block py-2 px-9 w-full bg-white text-center border-b border-dark/6 md:hidden'>
           <p className='font-bold'>{authCtx.username}</p>
           <div className='my-2 h-[1px] w-full bg-dark/20'></div>
-          <button onClick={authCtx.onLogout}>{t('logout')}</button>
+          <button onClick={authCtx.onLogout} id='logout-button'>
+            {t('logout')}
+          </button>
         </div>
       )}
     </>

@@ -60,7 +60,7 @@ export const translationsGe = {
   // By Country
   searchByCountry: 'მოძებნე ქვეყანა',
 
-  // Errors
+  // Hook Form Errors
   usernameRequired: 'მომხმარებლის სახელი აუცილებელია',
   usernameMinLength: 'მომხმარებლის სახელი უნდა შედგებოდეს მინ 3 სიმბოლოსგან',
   emailRequired: 'ელ ფოსტა აუცილებელია',
@@ -69,4 +69,11 @@ export const translationsGe = {
   passwordMinLength: 'პაროლის სახელი უნდა შედგებოდეს მინ 3 სიმბოლოსგან',
   repeatPasswordRequired: 'პაროლის გამეორება აუცილებელია',
   passwordsMatch: 'პაროლები უნდა ემთხვეოდეს',
+
+  // Api Errors
+  usernameTaken: 'მომხმარებლის სახელი უკვე გამოყენებულია',
+  emailTaken: 'ელ ფოსტა უკვე გამოყენებულია',
+  usernameNoUser: 'მომხარებელი მსგავსი სახელით ვერ მოიძებნა',
+  emailNoUser: 'მომხმარებელი მსგავსი ელ ფოსტით ვერ მოიძებნა',
+  passwordInvalid: 'პაროლი არასწორია',
 };

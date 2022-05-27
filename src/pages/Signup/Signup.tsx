@@ -43,22 +43,24 @@ const Signup = () => {
 
       navigate('/notification/send-email');
     } catch (err: any) {
-      const message = err?.response?.data[0]?.message;
+      const error = err?.response?.data;
 
-      if (!message) {
+      if (!error) {
         console.error(err);
         return;
       }
 
+      const message = error[0].message;
+
       if (message.includes('username')) {
         setError('username', {
           type: 'custom',
-          message: 'Username must be unique',
+          message: t('usernameTaken'),
         });
       }
 
       if (message.includes('email')) {
-        setError('email', { type: 'custom', message: 'Email must be unique' });
+        setError('email', { type: 'custom', message: t('emailTaken') });
       }
     }
   });
@@ -135,7 +137,7 @@ const Signup = () => {
           error={errors?.repeatPassword?.message}
           isTouched={touchedFields?.repeatPassword}
         />
-        <Button type='submit' value={t('signupButton')} />
+        <Button type='submit' value={t('signupButton')} id='signup-button' />
       </form>
       <p className='text-dark/60 text-center max-w-sm'>
         {t('alreadyHaveAccount')}{' '}

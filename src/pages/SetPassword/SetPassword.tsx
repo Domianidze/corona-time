@@ -94,7 +94,7 @@ const SetPassword = () => {
         error={errors?.repeatPassword?.message}
         isTouched={touchedFields?.repeatPassword}
       />
-      <Button type='submit' value={t('saveChanges')} />
+      <Button type='submit' value={t('saveChanges')} id='set-password-button' />
     </form>
   );
 };
