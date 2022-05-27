@@ -2,7 +2,7 @@ import { useContext } from 'react';
 
 import axios from 'axios';
 
-import AuthContext from 'store/AuthContext';
+import AuthContext from 'state/AuthContext';
 
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -10,9 +10,9 @@ import { useForm } from 'react-hook-form';
 
 import { useTranslation } from 'react-i18next';
 
-import Title from 'components/Title';
-import Input from 'components/Input';
-import Button from 'components/Button';
+import { Title } from 'components';
+import { Input } from 'components';
+import { Button } from 'components';
 
 import { API_URL } from 'config/api';
 

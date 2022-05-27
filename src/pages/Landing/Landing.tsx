@@ -2,14 +2,14 @@ import { useState, useEffect, useContext } from 'react';
 
 import axios from 'axios';
 
-import AuthContext from 'store/AuthContext';
+import AuthContext from 'state/AuthContext';
 
 import { Outlet, useLocation, NavLink } from 'react-router-dom';
 
 import { useTranslation } from 'react-i18next';
 
 import Layout from './components/Layout';
-import Title from 'components/Title';
+import { Title } from 'components';
 
 import { API_URL } from 'config/api';
 

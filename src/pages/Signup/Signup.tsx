@@ -6,9 +6,9 @@ import { useForm } from 'react-hook-form';
 
 import { useTranslation } from 'react-i18next';
 
-import WelcomeText from 'components/WelcomeText';
-import Input from 'components/Input';
-import Button from 'components/Button';
+import { WelcomeText } from 'components';
+import { Input } from 'components';
+import { Button } from 'components';
 
 import { API_URL, SIGN_UP_CONFIRM_URL } from 'config/api';
 

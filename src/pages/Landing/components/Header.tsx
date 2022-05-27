@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import AuthContext from 'store/AuthContext';
+import AuthContext from 'state/AuthContext';
 
 import { useTranslation } from 'react-i18next';
 

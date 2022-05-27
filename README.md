@@ -1,46 +1,111 @@
-# Getting Started with Create React App
+![Logo](./readme/assets/img/logo.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Coronatime
+ 
+Coronatime - is a platform where we can register, login (also reset password if we forgot) </br> 
+and see what the situation is in the world today.
 
-## Available Scripts
+### Table of Contents
 
-In the project directory, you can run:
+* [Prerequisites](#prerequisites)
+* [Tech Stack](#tech-stack)
+* [Resources](#resources)
+* [Getting Started](#getting-started)
+* [Testing](#testing)
+* [Project Structure](#project-structure)
+* [Deployment](#deployment)
 
-### `npm start`
+### Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* <img src="./readme/assets/img/nodejs.png" height="15px" style='padding-right: 5px'> *Node JS @16.14.2*
+* <img src="./readme/assets/img/npm.png" height="15px" style='padding-right: 5px'/> *npm 8.5.0*
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Tech Stack
 
-### `npm test`
+* <img src="./readme/assets/img/typescript.png" height="15"  style='padding-right: 5px'> [Typescript @4.6.4](https://www.typescriptlang.org/) - programming language
+* <img src="./readme/assets/img/react.png" height="15"  style='padding-right: 5px'> [React @18.0.0](https://reactjs.org) - front-end framework
+* <img src="./readme/assets/img/react-router.png" height="15"  style='padding-right: 5px'> [React Router @6.3.0](https://reactrouter.com/) - routing library
+* <img src="./readme/assets/img/react-hook-form.png" height="15"  style='padding-right: 5px'> [React Hook Form @7.30.0](https://react-hook-form.com/) - form validation library
+* <img src="./readme/assets/img/tailwind.png" height="15"  style='padding-right: 5px'> [Tailwind @3.0.24](https://tailwindcss.com/) - css framework
+* <img src="./readme/assets/img/i18next.png" height="15"  style='padding-right: 5px'> [i18next @21.8.4](https://www.i18next.com/) - internationalization framework
+* <img src="./readme/assets/img/cypress.png" height="15"  style='padding-right: 5px'> [Cypress  @9.6.0](https://www.cypress.io/) - end-to-end testing framework
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Resources
 
-### `npm run build`
+*  [Application Design (Figma)](https://www.figma.com/file/O9A950iYrHgZHtBuCtNSY8/Coronatime?node-id=0%3A1)
+*  [API Specification](https://coronatime-api.devtest.ge/)
+*  [Font [Inter]](https://fonts.google.com/specimen/Inter?query=Inter)
+*  [Font [FiraGO]](https://bboxtype.com/typefaces/FiraGO/#!layout=specimen)
+*  [Git Commit Rules](https://redberry.gitbook.io/resources/git-is-semantikuri-komitebi)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1\. First of all clone the repository from github:
+```sh
+git clone https://github.com/RedberryInternship/coronatime-Domianidze
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2\. Then install all the dependencies:
+```sh
+npm install
+```
 
-### `npm run eject`
+### Testing
+Redberry Covid Questionnaire uses ``` @cypress ```  for testing.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+you can run and view tests in the Cypress GUI. You can open the Cypress GUI  using the following commands:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1\. First of all start the dev server:
+```sh
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+2\. Then open the Cypress GUI:
+```sh
+npx cypress open
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Project Structure
 
-## Learn More
+```bash
+├─── cypress # cypress files
+├─── readme # readme assets
+├─── public # public files
+├─── src # source codes
+│   ├─── assets # images and fonts
+│   ├─── components # reusable components
+│   ├───├─── component-name.tsc # component
+│   ├───├─── index.ts # export all components
+│   ├─── config configuration files
+│   ├───├─── config-name.ts # configuration file
+│   ├─── pages # pages
+│   ├───├─── page-folder # page folder
+│   ├───├───├─── page-name.tsx # page component
+│   ├───├───├─── index.ts # export default page
+│   ├───├─── index.ts # export all pages
+│   ├─── state # state managment files 
+│   ├─── translations # translation files 
+│   ├─── App.tsx # react app 
+│   ├─── index.css # global styles 
+│   ├─── index.tsx # index file 
+│   ├─── react-app-env.d.ts # essentialtypes 
+- .gitignore # git ignore file
+- .babelrc.json # babel config file
+- .eslintrc.json # eslint config file
+- .prettierrc.json # prettier config file
+- tailwind.config.js # tailwind config file
+- postcss.config.js # postcss config file
+- tsconfig.json # typescript config file
+- package.json # dependency manager configurations
+- package-lock.json # dependency manager configurations
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Deployment
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+We have a helper script which helps us in deployment.
+
+Simply run this command to get deplyoment ready files in the  ``` public ```  folder:
+
+```sh
+npm run build
+```

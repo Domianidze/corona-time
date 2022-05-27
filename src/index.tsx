@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client';
 
 import { BrowserRouter } from 'react-router-dom';
 
-import { AuthContextProvider } from 'store/AuthContext';
+import { AuthContextProvider } from 'state/AuthContext';
 
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';

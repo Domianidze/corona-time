@@ -2,7 +2,7 @@ import { useContext } from 'react';
 
 import axios from 'axios';
 
-import AuthContext from 'store/AuthContext';
+import AuthContext from 'state/AuthContext';
 
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -10,10 +10,10 @@ import { useForm } from 'react-hook-form';
 
 import { useTranslation } from 'react-i18next';
 
-import WelcomeText from 'components/WelcomeText';
-import Input from 'components/Input';
-import CheckBox from 'components/CheckBox';
-import Button from 'components/Button';
+import { WelcomeText } from 'components';
+import { Input } from 'components';
+import { CheckBox } from 'components';
+import { Button } from 'components';
 
 import { API_URL } from 'config/api';
 

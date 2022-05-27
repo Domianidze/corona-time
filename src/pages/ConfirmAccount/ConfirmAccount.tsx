@@ -7,7 +7,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import SuccessImg from 'assets/img/icons/success-big.png';
-import Button from 'components/Button';
+import { Button } from 'components';
 
 import { API_URL } from 'config/api';
 

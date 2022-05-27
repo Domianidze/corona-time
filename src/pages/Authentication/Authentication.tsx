@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 
-import LangSelect from 'components/LangSelect';
+import { LangSelect } from 'components';
 
 import LogoImg from 'assets/img/logo.png';
 import CovidImg from 'assets/img/covid.png';
