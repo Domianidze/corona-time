@@ -77,9 +77,9 @@ const Login = () => {
   });
 
   return (
-    <div className='w-fit'>
+    <div className='w-fit max-w-full'>
       <WelcomeText main={t('loginTitle')} secondary={t('loginParagraph')} />
-      <form className='max-w-sm' onSubmit={loginHandler}>
+      <form className='max-w-full sm:max-w-sm' onSubmit={loginHandler}>
         <Input
           label={t('loginUsernameLabel')}
           type='text'
@@ -114,7 +114,7 @@ const Login = () => {
           error={errors?.password?.message}
           isTouched={touchedFields?.password}
         />
-        <div className='w-96 flex justify-between items-center'>
+        <div className='w-96 max-w-full flex justify-between items-center'>
           <CheckBox
             label={t('rememberDevice')}
             id='remember-device'

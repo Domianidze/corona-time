@@ -3,7 +3,7 @@ import Wrapper from './Wrapper';
 
 const Layout: React.FC<{ children: React.ReactNode }> = (props) => {
   return (
-    <div className=''>
+    <div>
       <Header />
       <Wrapper>{props.children}</Wrapper>
     </div>

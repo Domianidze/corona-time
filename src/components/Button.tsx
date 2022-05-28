@@ -6,7 +6,7 @@ const Button: React.FC<{
   return (
     <button
       type={props.type}
-      className='my-3 w-96 h-14 text-white font-black uppercase bg-brand/secondary rounded-lg'
+      className='my-3 w-full h-14 text-white font-black uppercase bg-brand/secondary rounded-lg sm:w-96'
       id={props.id}
     >
       {props.value}

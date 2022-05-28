@@ -57,26 +57,31 @@ const ResetPassword = () => {
   });
 
   return (
-    <form onSubmit={resetPasswordHandler}>
-      <Title value={t('resetPassword')} className='text-center' />
-      <Input
-        type='email'
-        label={t('emailLabel')}
-        placeholder={t('emailPlaceholder')}
-        id='email'
-        classname='py-10'
-        register={{
-          ...register('email', {
-            required: t('emailRequired'),
-            pattern: {
-              value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-              message: t('emailValid'),
-            },
-          }),
-        }}
-        error={errors?.email?.message}
-        isTouched={touchedFields?.email}
-      />
+    <form
+      className='pt-32 w-full h-full flex flex-col items-center justify-between sm:pt-0 sm:justify-center'
+      onSubmit={resetPasswordHandler}
+    >
+      <div className='w-full sm:w-96'>
+        <Title value={t('resetPassword')} className='text-center' />
+        <Input
+          type='email'
+          label={t('emailLabel')}
+          placeholder={t('emailPlaceholder')}
+          id='email'
+          classname='py-10'
+          register={{
+            ...register('email', {
+              required: t('emailRequired'),
+              pattern: {
+                value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+                message: t('emailValid'),
+              },
+            }),
+          }}
+          error={errors?.email?.message}
+          isTouched={touchedFields?.email}
+        />
+      </div>
       <Button
         type='submit'
         value={t('resetPassword')}

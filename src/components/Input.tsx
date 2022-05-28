@@ -24,7 +24,7 @@ const Input: React.FC<{
   }
 
   return (
-    <div className={`py-3 flex flex-col ${props.classname}`}>
+    <div className={`py-3 w-full flex flex-col sm:w-96 ${props.classname}`}>
       <label htmlFor={props.id} className='font-bold'>
         {props.label}
       </label>
@@ -36,7 +36,7 @@ const Input: React.FC<{
           placeholder={props.placeholder}
           className={`form-input my-1 px-6 ${
             success && 'pr-14'
-          } w-96 h-14 text-dark/100 border ${borderColor} rounded-lg focus:border-brand/primary`}
+          } w-full h-14 text-dark/100 border ${borderColor} rounded-lg focus:border-brand/primary`}
         />
         {success && (
           <img
@@ -52,7 +52,7 @@ const Input: React.FC<{
       {props.error && (
         <div className='pt-1 flex items-center'>
           <img src={ErrorImg} alt='error' />
-          <p className='pl-2 text-sm font-medium text-system/error whitespace-nowrap'>
+          <p className='pl-2 text-sm font-medium text-system/error'>
             {props.error}
           </p>
         </div>

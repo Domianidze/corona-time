@@ -57,43 +57,48 @@ const SetPassword = () => {
   });
 
   return (
-    <form onSubmit={setPasswordHandler}>
-      <Title value={t('resetPassword')} className='text-center' />
-      <Input
-        type='password'
-        label={t('newPasswordLabel')}
-        placeholder={t('newPasswordPlaceholder')}
-        id='password'
-        classname='pt-10'
-        register={{
-          ...register('password', {
-            required: t('passwordRequired'),
-            minLength: {
-              value: 3,
-              message: t('passwordMinLength'),
-            },
-          }),
-        }}
-        error={errors?.password?.message}
-        isTouched={touchedFields?.password}
-      />
-      <Input
-        type='password'
-        label={t('repeatPasswordLabel')}
-        placeholder={t('repeatPasswordPlaceholder')}
-        id='repeat-password'
-        classname='pb-10'
-        register={{
-          ...register('repeatPassword', {
-            required: t('repeatPasswordRequired'),
-            validate: (value) => {
-              return value === watch('password') || t('passwordsMatch');
-            },
-          }),
-        }}
-        error={errors?.repeatPassword?.message}
-        isTouched={touchedFields?.repeatPassword}
-      />
+    <form
+      className='pt-32 w-full h-full flex flex-col items-center justify-between sm:pt-0 sm:justify-center'
+      onSubmit={setPasswordHandler}
+    >
+      <div className='w-full sm:w-96'>
+        <Title value={t('resetPassword')} className='text-center' />
+        <Input
+          type='password'
+          label={t('newPasswordLabel')}
+          placeholder={t('newPasswordPlaceholder')}
+          id='password'
+          classname='pt-10'
+          register={{
+            ...register('password', {
+              required: t('passwordRequired'),
+              minLength: {
+                value: 3,
+                message: t('passwordMinLength'),
+              },
+            }),
+          }}
+          error={errors?.password?.message}
+          isTouched={touchedFields?.password}
+        />
+        <Input
+          type='password'
+          label={t('repeatPasswordLabel')}
+          placeholder={t('repeatPasswordPlaceholder')}
+          id='repeat-password'
+          classname='pb-10'
+          register={{
+            ...register('repeatPassword', {
+              required: t('repeatPasswordRequired'),
+              validate: (value) => {
+                return value === watch('password') || t('passwordsMatch');
+              },
+            }),
+          }}
+          error={errors?.repeatPassword?.message}
+          isTouched={touchedFields?.repeatPassword}
+        />
+      </div>
       <Button type='submit' value={t('saveChanges')} id='set-password-button' />
     </form>
   );

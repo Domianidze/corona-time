@@ -32,7 +32,7 @@ const Card: React.FC<{
 
   return (
     <div
-      className={`w-1/2 h-56 flex justify-center items-center flex-col ${bgColor} bg-opacity-10 rounded-2xl border-8 border-white md:w-96 md:h-64 ${props.className}`}
+      className={`h-56 flex justify-center items-center flex-col ${bgColor} bg-opacity-10 rounded-2xl border-8 border-white md:1/3 md:h-64 lg:h-80 lg:w-[30%] ${props.className}`}
     >
       <img src={graph} alt='graph' />
       <p className='py-3 px-1 text-lg font-medium md:text-xl max-w-full break-words text-center'>

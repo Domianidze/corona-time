@@ -3,6 +3,7 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
+        310: '77.5rem',
         300: '75rem',
         200: '50rem',
         130: '32.5rem',
@@ -24,6 +25,7 @@ module.exports = {
         firaGO: ['firaGO', 'sans-serif'],
       },
       fontSize: {
+        xxs: '0.625rem',
         '2.1xl': '1.55rem',
         '4.2xl': '2.4rem',
       },

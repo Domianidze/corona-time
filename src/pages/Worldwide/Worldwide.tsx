@@ -19,10 +19,20 @@ const Worldwide = () => {
         type='newCases'
         title={t('newCases')}
         amount={totals.newCases}
-        className='!w-full md:!w-96'
+        className='w-full md:w-1/2'
       />
-      <Card type='recovered' title={t('recovered')} amount={totals.recovered} />
-      <Card type='deaths' title={t('deaths')} amount={totals.deaths} />
+      <Card
+        type='recovered'
+        title={t('recovered')}
+        amount={totals.recovered}
+        className='w-1/2'
+      />
+      <Card
+        type='deaths'
+        title={t('deaths')}
+        amount={totals.deaths}
+        className='w-1/2'
+      />
     </div>
   );
 };
