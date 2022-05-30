@@ -1,16 +1,15 @@
 import { useContext, useEffect } from 'react';
 
-import AuthContext from 'state/AuthContext';
+import { AuthContext } from 'state';
 
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { useTranslation } from 'react-i18next';
-import i18next from 'i18next';
 
 import {
   Authentication,
-  Signup,
-  Login,
+  SignUp,
+  LogIn,
   Reset,
   ResetPassword,
   SetPassword,
@@ -25,23 +24,20 @@ import {
 
 const App = () => {
   const { t } = useTranslation();
-  console.log(t('applicationRunning'));
-
-  const lang = i18next.language;
 
   const authCtx = useContext(AuthContext);
   const isLoggedIn = !!localStorage.getItem('token') || authCtx.isLoggedIn;
 
-  const { onLogin } = authCtx;
+  const { onLogIn } = authCtx;
 
   useEffect(() => {
     const savedToken = localStorage.getItem('token');
     const savedUsername = localStorage.getItem('username');
 
     if (savedToken && savedUsername) {
-      onLogin(savedToken, savedUsername, true);
+      onLogIn(savedToken, savedUsername, true);
     }
-  }, [onLogin]);
+  }, [onLogIn]);
 
   let indexRoute = './authentication';
 
@@ -50,17 +46,13 @@ const App = () => {
   }
 
   return (
-    <div
-      className={`App ${
-        lang === 'ge' ? 'font-firaGO' : 'font-inter'
-      } text-dark/100`}
-    >
+    <div className={`App ${t('fontFamily')} text-dark/100`}>
       <Routes>
         <Route path='/authentication' element={<Authentication />}>
-          <Route path='signup' element={<Signup />} />
-          <Route path='login' element={<Login />} />
-          <Route path='*' element={<Navigate to='login' />} />
-          <Route index element={<Navigate to='login' />} />
+          <Route path='signUp' element={<SignUp />} />
+          <Route path='logIn' element={<LogIn />} />
+          <Route path='*' element={<Navigate to='logIn' />} />
+          <Route index element={<Navigate to='logIn' />} />
         </Route>
         <Route path='/reset' element={<Reset />}>
           <Route path='reset-password' element={<ResetPassword />} />

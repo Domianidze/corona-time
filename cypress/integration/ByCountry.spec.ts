@@ -10,13 +10,12 @@ describe('by country tab', () => {
       fixture: 'countries-successful.json',
     }).as('countriesSuccessful');
     cy.login();
-    cy.wait('@loginSuccessful');
-    cy.wait('@countriesSuccessful');
     cy.get('#by-country-button').click();
   });
 
   it('user should be able to change language', () => {
-    cy.get('#language').select('ge');
+    cy.get('#language').click();
+    cy.contains('ქართული').click();
     cy.contains('ლოკაცია').should('be.visible');
   });
 

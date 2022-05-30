@@ -6,10 +6,10 @@ import { Link, useLocation } from 'react-router-dom';
 
 import { useTranslation } from 'react-i18next';
 
-import SuccessImg from 'assets/img/icons/success-big.png';
+import { SuccessBigIcon } from 'assets/img/icons';
 import { Button } from 'components';
 
-import { API_URL } from 'config/api';
+const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
 
 const ConfirmAccount = () => {
   const { t } = useTranslation();
@@ -24,15 +24,13 @@ const ConfirmAccount = () => {
           hash,
         };
 
-        await axios.post(`${API_URL}/confirm-account`, requestData, {
+        await axios.post(`${REACT_APP_API_URL}/confirm-account`, requestData, {
           headers: {
             accept: 'application/json',
             'Content-Type': 'application/json',
           },
         });
-      } catch (err) {
-        console.error(err);
-      }
+      } catch (err) {}
     };
 
     confirmAccount();
@@ -41,13 +39,13 @@ const ConfirmAccount = () => {
   return (
     <div>
       <div className='mb-14 flex flex-col justify-center items-center'>
-        <img src={SuccessImg} alt='success' />
+        <img src={SuccessBigIcon} alt='success' />
         <p className='py-3 text-lg max-w-sm text-center'>
           {t('confirmAccount')}
         </p>
       </div>
       <Link
-        to='/authentication/login'
+        to='/authentication/logIn'
         className='px-3 absolute bottom-0 left-0 w-full sm:static sm:px-0'
       >
         <Button type='button' value={t('signin')} />

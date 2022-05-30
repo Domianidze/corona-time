@@ -1,5 +1,5 @@
-export const translationsGe = {
-  applicationRunning: 'აპლიკაცია მუშაობს!',
+const translationsGe = {
+  fontFamily: 'font-firaGO',
 
   // Authentication
   passwordLabel: 'პაროლი',
@@ -10,27 +10,27 @@ export const translationsGe = {
   emailLabel: 'ელ–ფოსტა',
   emailPlaceholder: 'შეიყვანეთ ელ–ფოსტა',
 
-  // Login
-  loginTitle: 'კეთილი იყოს თქვენი დაბრუნება',
-  loginParagraph:
+  // LogIn
+  logInTitle: 'კეთილი იყოს თქვენი დაბრუნება',
+  logInParagraph:
     'კეთილი იყოს თქვენი დაბრუნება! გთხოვთ შეიყვანოთ თქვენი ინფორმაცია',
-  loginUsernameLabel: 'მომხმარებელს სახელი',
-  loginUsernamePlaceholder: 'შეიყვანეთ მომხმარებლის სახელი ან ელ ფოსტა',
+  logInUsernameLabel: 'მომხმარებელს სახელი',
+  logInUsernamePlaceholder: 'შეიყვანეთ მომხმარებლის სახელი ან ელ ფოსტა',
   forgotPassword: 'დაგავიწყდათ პაროლი?',
-  loginButton: 'შესვლა',
+  logInButton: 'შესვლა',
   dontHaveAccount: 'არ გაქვთ ანგარიში?',
-  signupFree: 'დარეგისტრირდი უფასოდ',
+  signUpFree: 'დარეგისტრირდი უფასოდ',
 
-  // Signup
-  signupTitle: 'კეთილი იყოს თქვენი მობრძანება კორონათაიმზე',
-  signupParagraph: 'რეგისტრაციისთვის შეიყვანეთ მოთხოვნილი ინფორმაცია',
-  signupUsernameLabel: 'მომხმარებლის სახელი',
-  signupUsernamePlaceholder: 'შეიყვანეთ მომხმარებლის სახელი',
-  signupUsernameNote:
+  // SignUp
+  signUpTitle: 'კეთილი იყოს თქვენი მობრძანება კორონათაიმზე',
+  signUpParagraph: 'რეგისტრაციისთვის შეიყვანეთ მოთხოვნილი ინფორმაცია',
+  signUpUsernameLabel: 'მომხმარებლის სახელი',
+  signUpUsernamePlaceholder: 'შეიყვანეთ მომხმარებლის სახელი',
+  signUpUsernameNote:
     'მომხმარებლის სახელი უნდა იყოს უნიკალური, უნდა შედგებოდეს მინ 3 სიმბოლოსგან',
-  signupButton: 'რეგისტრაცია',
+  signUpButton: 'რეგისტრაცია',
   alreadyHaveAccount: 'გაქვთ უკვე ანგარიში?',
-  login: 'შესვლა',
+  logIn: 'შესვლა',
 
   // Reset
   resetPassword: 'პაროლის შეცვლა',
@@ -79,3 +79,5 @@ export const translationsGe = {
   emailNoUser: 'მომხმარებელი მსგავსი ელ ფოსტით ვერ მოიძებნა',
   passwordInvalid: 'პაროლი არასწორია',
 };
+
+export default translationsGe;

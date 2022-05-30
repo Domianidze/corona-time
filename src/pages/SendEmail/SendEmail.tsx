@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import SuccessImg from 'assets/img/icons/success-big.png';
+import { SuccessBigIcon } from 'assets/img/icons';
 
 const SendEmail = () => {
   const { t } = useTranslation();
@@ -8,7 +8,7 @@ const SendEmail = () => {
   return (
     <div>
       <div className='mb-14 flex justify-center items-center flex-col'>
-        <img src={SuccessImg} alt='success' />
+        <img src={SuccessBigIcon} alt='success' />
         <p className='py-3 text-lg'>{t('sendEmail')}</p>
       </div>
     </div>

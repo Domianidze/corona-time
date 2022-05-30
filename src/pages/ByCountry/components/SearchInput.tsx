@@ -1,4 +1,4 @@
-import SearchImg from 'assets/img/icons/search.png';
+import { SearchIcon } from 'assets/img/icons';
 
 const SearchInput: React.FC<{
   id: string;
@@ -9,7 +9,7 @@ const SearchInput: React.FC<{
   return (
     <div className='relative w-full'>
       <img
-        src={SearchImg}
+        src={SearchIcon}
         alt='search'
         className='absolute top-1/2 left-6 -translate-y-1/2'
       />

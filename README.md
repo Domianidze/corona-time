@@ -44,10 +44,14 @@ and see what the situation is in the world today.
 ```sh
 git clone https://github.com/RedberryInternship/coronatime-Domianidze
 ```
-
-2\. Then install all the dependencies:
+2\. Secondly install all the dependencies:
 ```sh
 npm install
+```
+
+3\. Then create the config file and change it if needed:
+```sh
+cp .env.example .env
 ```
 
 ### Testing
@@ -55,7 +59,12 @@ Redberry Covid Questionnaire uses ``` @cypress ```  for testing.
 
 you can run and view tests in the Cypress GUI. You can open the Cypress GUI  using the following commands:
 
-1\. First of all start the dev server:
+1\. First of all create the config file and change it if needed:
+```sh
+cp cypress.json.example cypress.json
+```
+
+2\. Secondly start the dev server:
 ```sh
 npm start
 ```
@@ -74,21 +83,25 @@ npx cypress open
 ├─── src # source codes
 │   ├─── assets # images and fonts
 │   ├─── components # reusable components
-│   ├───├─── component-name.tsc # component
+│   ├───├─── component-name.tsx # component
 │   ├───├─── index.ts # export all components
-│   ├─── config configuration files
-│   ├───├─── config-name.ts # configuration file
 │   ├─── pages # pages
 │   ├───├─── page-folder # page folder
+│   ├───├───├─── components # [OPTIONAL] reusable components
+│   ├───├───├───├─── component-name.tsx # component
+│   ├───├───├───├─── index.ts # export all components
 │   ├───├───├─── page-name.tsx # page component
 │   ├───├───├─── index.ts # export default page
 │   ├───├─── index.ts # export all pages
 │   ├─── state # state managment files 
+│   ├───├─── state-name.tscx # component
+│   ├───├─── index.ts # export all states
 │   ├─── translations # translation files 
 │   ├─── App.tsx # react app 
 │   ├─── index.css # global styles 
 │   ├─── index.tsx # index file 
 │   ├─── react-app-env.d.ts # essentialtypes 
+- .env-example # config file example
 - .gitignore # git ignore file
 - .babelrc.json # babel config file
 - .eslintrc.json # eslint config file

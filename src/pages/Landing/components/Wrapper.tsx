@@ -1,4 +1,6 @@
-const Wrapper: React.FC<{ children: React.ReactNode; className?: string }> = (
+import { PropsWithChildren } from 'react';
+
+const Wrapper: React.FC<PropsWithChildren<{ className?: string }>> = (
   props
 ) => {
   return (

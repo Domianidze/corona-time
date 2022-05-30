@@ -1,5 +1,5 @@
-export const translationsEn = {
-  applicationRunning: 'Application running!',
+const translationsEn = {
+  fontFamily: 'Inter',
 
   // Authentication
   passwordLabel: 'Password',
@@ -10,25 +10,25 @@ export const translationsEn = {
   emailLabel: 'Email',
   emailPlaceholder: 'Enter your email',
 
-  // Login
-  loginTitle: 'Welcome back',
-  loginParagraph: 'Welcome back! Please enter your details',
-  loginUsernameLabel: 'Username',
-  loginUsernamePlaceholder: 'Enter unique username or email',
+  // LogIn
+  logInTitle: 'Welcome back',
+  logInParagraph: 'Welcome back! Please enter your details',
+  logInUsernameLabel: 'Username',
+  logInUsernamePlaceholder: 'Enter unique username or email',
   forgotPassword: 'Forgot Password?',
-  loginButton: 'Log In',
+  logInButton: 'Log In',
   dontHaveAccount: "Don't have an account?",
-  signupFree: 'Sign up for free',
+  signUpFree: 'Sign up for free',
 
-  // Signup
-  signupTitle: 'Welcome to Corona',
-  signupParagraph: 'Please enter required info to sign up',
-  signupUsernameLabel: 'Username',
-  signupUsernamePlaceholder: 'Enter unique username',
-  signupUsernameNote: 'Username should be unique, min 3 symbols',
-  signupButton: 'Sign Up',
+  // SignUp
+  signUpTitle: 'Welcome to Corona',
+  signUpParagraph: 'Please enter required info to sign up',
+  signUpUsernameLabel: 'Username',
+  signUpUsernamePlaceholder: 'Enter unique username',
+  signUpUsernameNote: 'Username should be unique, min 3 symbols',
+  signUpButton: 'Sign Up',
   alreadyHaveAccount: 'Already have an account?',
-  login: 'Log In',
+  logIn: 'Log In',
 
   // Reset
   resetPassword: 'Reset Password',
@@ -77,3 +77,5 @@ export const translationsEn = {
   emailNoUser: 'There is no user with such email',
   passwordInvalid: 'Password is not valid',
 };
+
+export default translationsEn;

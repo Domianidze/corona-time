@@ -9,8 +9,6 @@ describe('header component', () => {
       forceNetworkError: true,
     }).as('networkError');
     cy.login();
-    cy.wait('@loginSuccessful');
-    cy.wait('@networkError');
   });
 
   it('mobile user should be able to open and close menu', () => {

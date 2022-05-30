@@ -1,6 +1,4 @@
-import NewCasesImg from 'assets/img/charts/new-cases.png';
-import RecoveredImg from 'assets/img/charts/recovered.png';
-import DeathImg from 'assets/img/charts/death.png';
+import { NewCasesIcon, RecoveredIcon, DeathsIcon } from 'assets/img/charts';
 
 const Card: React.FC<{
   type: 'newCases' | 'recovered' | 'deaths';
@@ -13,19 +11,19 @@ const Card: React.FC<{
   let textColor;
 
   if (props.type === 'newCases') {
-    graph = NewCasesImg;
+    graph = NewCasesIcon;
     bgColor = 'bg-brand/primary';
     textColor = 'text-brand/primary';
   }
 
   if (props.type === 'recovered') {
-    graph = RecoveredImg;
+    graph = RecoveredIcon;
     bgColor = 'bg-brand/secondary';
     textColor = 'text-brand/secondary';
   }
 
   if (props.type === 'deaths') {
-    graph = DeathImg;
+    graph = DeathsIcon;
     bgColor = 'bg-brand/teritary';
     textColor = 'text-brand/teritary';
   }

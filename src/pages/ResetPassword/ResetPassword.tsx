@@ -10,7 +10,8 @@ import { Title } from 'components';
 import { Input } from 'components';
 import { Button } from 'components';
 
-import { API_URL, RECOVER_PASSWORD_URL } from 'config/api';
+const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
+const REACT_APP_FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL;
 
 const ResetPassword = () => {
   const { t } = useTranslation();
@@ -30,22 +31,25 @@ const ResetPassword = () => {
     try {
       const requestData = {
         email: data.email,
-        backlink: RECOVER_PASSWORD_URL,
+        backlink: `${REACT_APP_FRONTEND_URL}/reset/set-password`,
       };
 
-      await axios.post(`${API_URL}/password/send-recovery-link`, requestData, {
-        headers: {
-          accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-      });
+      await axios.post(
+        `${REACT_APP_API_URL}/password/send-recovery-link`,
+        requestData,
+        {
+          headers: {
+            accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        }
+      );
 
       navigate('/notification/send-email');
     } catch (err: any) {
       const error = err?.response?.data;
 
       if (!error) {
-        console.error(err);
         return;
       }
 
@@ -68,7 +72,7 @@ const ResetPassword = () => {
           label={t('emailLabel')}
           placeholder={t('emailPlaceholder')}
           id='email'
-          classname='py-10'
+          className='py-10'
           register={{
             ...register('email', {
               required: t('emailRequired'),

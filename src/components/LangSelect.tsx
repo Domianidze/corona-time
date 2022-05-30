@@ -35,7 +35,7 @@ const LangSelect: React.FC<{ className?: string }> = (props) => {
   }, [selected]);
 
   return (
-    <div className={props.className}>
+    <div className={props.className} id='language'>
       <Listbox value={selected} onChange={setSelected}>
         {() => (
           <>
@@ -62,16 +62,7 @@ const LangSelect: React.FC<{ className?: string }> = (props) => {
                     }
                     value={language}
                   >
-                    {({ selected }) => (
-                      <span
-                        className={classNames(
-                          selected ? 'font-semibold' : 'font-normal',
-                          'block truncate'
-                        )}
-                      >
-                        {language.name}
-                      </span>
-                    )}
+                    <span>{language.name}</span>
                   </Listbox.Option>
                 ))}
               </Listbox.Options>

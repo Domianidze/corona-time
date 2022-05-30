@@ -2,7 +2,7 @@ import { useContext } from 'react';
 
 import axios from 'axios';
 
-import AuthContext from 'state/AuthContext';
+import { AuthContext } from 'state';
 
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ import { Title } from 'components';
 import { Input } from 'components';
 import { Button } from 'components';
 
-import { API_URL } from 'config/api';
+const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
 
 const SetPassword = () => {
   const { t } = useTranslation();
@@ -42,18 +42,16 @@ const SetPassword = () => {
         hash: hash,
       };
 
-      await axios.post(`${API_URL}/password/recover`, requestData, {
+      await axios.post(`${REACT_APP_API_URL}/password/recover`, requestData, {
         headers: {
           accept: 'application/json',
           'Content-Type': 'application/json',
         },
       });
 
-      authCtx.onLogout();
+      authCtx.onLogOut();
       navigate('/notification/update-password');
-    } catch (err) {
-      console.error(err);
-    }
+    } catch (err) {}
   });
 
   return (
@@ -68,7 +66,7 @@ const SetPassword = () => {
           label={t('newPasswordLabel')}
           placeholder={t('newPasswordPlaceholder')}
           id='password'
-          classname='pt-10'
+          className='pt-10'
           register={{
             ...register('password', {
               required: t('passwordRequired'),
@@ -86,7 +84,7 @@ const SetPassword = () => {
           label={t('repeatPasswordLabel')}
           placeholder={t('repeatPasswordPlaceholder')}
           id='repeat-password'
-          classname='pb-10'
+          className='pb-10'
           register={{
             ...register('repeatPassword', {
               required: t('repeatPasswordRequired'),

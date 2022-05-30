@@ -1,22 +1,20 @@
 import React from 'react';
 
-import ArrowsImg from 'assets/img/arrows/arrow.png';
-import ArrowsTopImg from 'assets/img/arrows/arrow-top.png';
-import ArrowsBottomImg from 'assets/img/arrows/arrow-bottom.png';
+import { ArrowIcon, ArrowTopIcon, ArrowBottomIcon } from 'assets/img/arrows';
 
-import { SortKeys } from '../types/sort-types';
+import { sortKeys } from '../sortTypes';
 
 const Table: React.FC<{
-  columns: { header: string; accessor: SortKeys }[];
+  columns: { header: string; accessor: sortKeys }[];
   data: {
     location: string;
     newCases: string;
     deaths: string;
     recovered: string;
   }[];
-  sortKey: SortKeys;
-  sortOrder: 'ascn' | 'desc';
-  onSort: (key: SortKeys) => void;
+  sortKey: sortKeys;
+  sortOrder: 'asc' | 'desc';
+  onSort: (key: sortKeys) => void;
 }> = (props) => {
   return (
     <div className='mt-5 w-full h-[calc(100vh-19rem)] border border-dark/4 rounded-lg shadow-sm md:my-10 md:h-[calc(100vh-26rem)] overflow-hidden'>
@@ -37,12 +35,12 @@ const Table: React.FC<{
                     {header.accessor === props.sortKey ? (
                       <img
                         src={
-                          props.sortOrder === 'ascn'
-                            ? ArrowsTopImg
-                            : ArrowsBottomImg
+                          props.sortOrder === 'asc'
+                            ? ArrowTopIcon
+                            : ArrowBottomIcon
                         }
                         alt={
-                          props.sortOrder === 'ascn'
+                          props.sortOrder === 'asc'
                             ? 'arrows-top'
                             : 'arrows-bottom'
                         }
@@ -50,7 +48,7 @@ const Table: React.FC<{
                       />
                     ) : (
                       <img
-                        src={ArrowsImg}
+                        src={ArrowIcon}
                         alt='arrows'
                         className='pl-1 sm:pl-2'
                       />

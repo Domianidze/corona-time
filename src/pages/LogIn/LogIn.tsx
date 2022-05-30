@@ -2,7 +2,7 @@ import { useContext } from 'react';
 
 import axios from 'axios';
 
-import AuthContext from 'state/AuthContext';
+import { AuthContext } from 'state';
 
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -15,9 +15,9 @@ import { Input } from 'components';
 import { CheckBox } from 'components';
 import { Button } from 'components';
 
-import { API_URL } from 'config/api';
+const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
 
-const Login = () => {
+const LogIn = () => {
   const { t } = useTranslation();
 
   const authCtx = useContext(AuthContext);
@@ -32,29 +32,32 @@ const Login = () => {
     mode: 'onTouched',
   });
 
-  const loginHandler = handleSubmit(async (data) => {
+  const logInHandler = handleSubmit(async (data) => {
     try {
       const requestData = {
         username: data.username,
         password: data.password,
       };
 
-      const response = await axios.post(`${API_URL}/login`, requestData, {
-        headers: {
-          accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-      });
+      const response = await axios.post(
+        `${REACT_APP_API_URL}/logIn`,
+        requestData,
+        {
+          headers: {
+            accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        }
+      );
 
       const token = response.data.token;
-      authCtx.onLogin(token, data.username, data.rememberDevice);
+      authCtx.onLogIn(token, data.username, data.rememberDevice);
 
       navigate('/landing');
     } catch (err: any) {
       const error = err?.response?.data;
 
       if (!error) {
-        console.error(err);
         return;
       }
 
@@ -78,12 +81,12 @@ const Login = () => {
 
   return (
     <div className='w-fit max-w-full'>
-      <WelcomeText main={t('loginTitle')} secondary={t('loginParagraph')} />
-      <form className='max-w-full sm:max-w-sm' onSubmit={loginHandler}>
+      <WelcomeText main={t('logInTitle')} secondary={t('logInParagraph')} />
+      <form className='max-w-full sm:max-w-sm' onSubmit={logInHandler}>
         <Input
-          label={t('loginUsernameLabel')}
+          label={t('logInUsernameLabel')}
           type='text'
-          placeholder={t('loginUsernamePlaceholder')}
+          placeholder={t('logInUsernamePlaceholder')}
           id='username'
           register={{
             ...register('username', {
@@ -128,20 +131,20 @@ const Login = () => {
             {t('forgotPassword')}
           </Link>
         </div>
-        <Button type='submit' value={t('login')} id='login-button' />
+        <Button type='submit' value={t('logIn')} id='logIn-button' />
       </form>
       <p className='text-dark/60 text-center max-w-sm'>
         {t('dontHaveAccount')}{' '}
         <Link
-          to='/authentication/signup'
+          to='/authentication/signUp'
           className='text-dark/100 font-bold'
-          id='signup-free-button'
+          id='signUp-free-button'
         >
-          {t('signupFree')}
+          {t('signUpFree')}
         </Link>
       </p>
     </div>
   );
 };
 
-export default Login;
+export default LogIn;

@@ -2,16 +2,15 @@ import ReactDOM from 'react-dom/client';
 
 import { BrowserRouter } from 'react-router-dom';
 
-import { AuthContextProvider } from 'state/AuthContext';
+import { AuthContextProvider } from 'state';
 
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import { translationsEn } from 'translations/translationsEn';
-import { translationsGe } from 'translations/translationsGe';
+import { translationsEn, translationsGe } from 'translations';
 
-import App from './App';
-import './index.css';
+import App from 'App';
+import 'index.css';
 
 const savedLang = localStorage.getItem('lang');
 

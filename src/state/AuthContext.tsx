@@ -1,27 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, PropsWithChildren } from 'react';
 
 const AuthContext = React.createContext<{
   token: string;
   username: string;
   isLoggedIn: boolean;
-  onLogin: (token: string, username: string, rememberDevice: boolean) => void;
-  onLogout: () => void;
+  onLogIn: (token: string, username: string, rememberDevice: boolean) => void;
+  onLogOut: () => void;
 }>({
   token: '',
   username: '',
   isLoggedIn: false,
-  onLogin: (token: string, username: string, rememberDevice: boolean) => {},
-  onLogout: () => {},
+  onLogIn: (token: string, username: string, rememberDevice: boolean) => {},
+  onLogOut: () => {},
 });
 
-export const AuthContextProvider: React.FC<{ children: React.ReactNode }> = (
+export const AuthContextProvider: React.FC<PropsWithChildren<unknown>> = (
   props
 ) => {
   const [token, setToken] = useState('');
   const [username, setUsername] = useState('');
   const isLoggedIn = !!token;
 
-  const loginHandler = (
+  const logInHandler = (
     token: string,
     username: string,
     rememberDevice: boolean
@@ -35,7 +35,7 @@ export const AuthContextProvider: React.FC<{ children: React.ReactNode }> = (
     }
   };
 
-  const logoutHandler = () => {
+  const logOutHandler = () => {
     setToken('');
     setUsername('');
     localStorage.removeItem('token');
@@ -48,8 +48,8 @@ export const AuthContextProvider: React.FC<{ children: React.ReactNode }> = (
         token: token,
         username: username,
         isLoggedIn: isLoggedIn,
-        onLogin: loginHandler,
-        onLogout: logoutHandler,
+        onLogIn: logInHandler,
+        onLogOut: logOutHandler,
       }}
     >
       {props.children}

@@ -5,25 +5,22 @@ import { useOutletContext } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 
-import SearchInput from './components/SearchInput';
-import Table from './components/Table';
+import { SearchInput, Table } from './components';
 
-import { SortKeys } from './types/sort-types';
-
-import { getTotals } from 'helpers/helper-functions';
+import { sortKeys } from './sortTypes';
 
 const ByCountry = () => {
   const { t } = useTranslation();
   const lang = i18next.language;
 
-  const [sortKey, setSortKey] = useState<SortKeys>('location');
-  const [sortOrder, setSortOrder] = useState<'ascn' | 'desc'>('ascn');
+  const [sortKey, setSortKey] = useState<sortKeys>('location');
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  const sortHandler = (key: SortKeys) => {
+  const sortHandler = (key: sortKeys) => {
     if (sortKey === key) {
       setSortOrder((prevState) => {
-        return prevState === 'ascn' ? 'desc' : 'ascn';
+        return prevState === 'asc' ? 'desc' : 'asc';
       });
     } else {
       setSortKey(key);
@@ -35,9 +32,8 @@ const ByCountry = () => {
   };
 
   const countries: any[] = useOutletContext();
-  const totals = getTotals(countries);
 
-  const columns: { header: string; accessor: SortKeys }[] = [
+  const columns: { header: string; accessor: sortKeys }[] = [
     { header: t('location'), accessor: 'location' },
     { header: t('newCases'), accessor: 'newCases' },
     { header: t('deaths'), accessor: 'deaths' },
@@ -67,16 +63,6 @@ const ByCountry = () => {
     });
   }
 
-  const data = [
-    {
-      location: t('worldwide'),
-      newCases: totals.newCases,
-      deaths: totals.deaths,
-      recovered: totals.recovered,
-    },
-    ...filteredCountries,
-  ];
-
   return (
     <div className='w-full'>
       <SearchInput
@@ -87,7 +73,7 @@ const ByCountry = () => {
       />
       <Table
         columns={columns}
-        data={data}
+        data={filteredCountries}
         sortKey={sortKey}
         sortOrder={sortOrder}
         onSort={sortHandler}

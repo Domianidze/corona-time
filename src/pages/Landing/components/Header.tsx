@@ -1,13 +1,14 @@
 import React, { useState, useContext, useEffect } from 'react';
-import AuthContext from 'state/AuthContext';
+
+import { AuthContext } from 'state';
 
 import { useTranslation } from 'react-i18next';
 
 import Wrapper from './Wrapper';
 import LangSelect from 'components/LangSelect';
 
-import LogoImg from 'assets/img/logo.png';
-import MenuImg from 'assets/img/icons/menu.png';
+import { LogoImg } from 'assets/img';
+import { MenuIcon } from 'assets/img/icons';
 
 const Header: React.FC = () => {
   const { t } = useTranslation();
@@ -45,7 +46,7 @@ const Header: React.FC = () => {
             <div className='hidden pl-10 items-center md:flex'>
               <p className='font-bold'>{authCtx.username}</p>
               <div className='mx-4 w-[1px] h-8 bg-dark/20'></div>
-              <button onClick={authCtx.onLogout}>{t('logout')}</button>
+              <button onClick={authCtx.onLogOut}>{t('logout')}</button>
             </div>
             <div className='mx-2 w-[1px] h-8 bg-dark/20 md:hidden'></div>
             <button
@@ -54,7 +55,7 @@ const Header: React.FC = () => {
               onClick={menuToggleHandler}
               id='menu-button'
             >
-              <img src={MenuImg} alt='menu' />
+              <img src={MenuIcon} alt='menu' />
             </button>
           </div>
         </Wrapper>
@@ -66,7 +67,7 @@ const Header: React.FC = () => {
         >
           <p className='font-bold'>{authCtx.username}</p>
           <div className='my-2 h-[1px] w-full bg-dark/20'></div>
-          <button onClick={authCtx.onLogout} id='logout-button'>
+          <button onClick={authCtx.onLogOut} id='logout-button'>
             {t('logout')}
           </button>
         </div>

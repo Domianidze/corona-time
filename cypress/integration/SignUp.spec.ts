@@ -17,7 +17,6 @@ describe('signup page', () => {
       fixture: 'username-taken.json',
     }).as('usernameTaken');
     cy.signup();
-    cy.wait('@usernameTaken');
     cy.contains('Username is already taken').should('be.visible');
   });
 
@@ -27,7 +26,6 @@ describe('signup page', () => {
       fixture: 'email-taken.json',
     }).as('emailTaken');
     cy.signup();
-    cy.wait('@emailTaken');
     cy.contains('Email is already taken').should('be.visible');
   });
 
@@ -36,7 +34,6 @@ describe('signup page', () => {
       forceNetworkError: true,
     }).as('networkError');
     cy.signup();
-    cy.wait('@networkError');
   });
 
   it('user should be able to signup', () => {
@@ -44,6 +41,5 @@ describe('signup page', () => {
       statusCode: 201,
     }).as('successful');
     cy.signup();
-    cy.wait('@successful');
   });
 });

@@ -15,7 +15,6 @@ describe('reset password page', () => {
     ).as('noUser');
     cy.get('#email').type('testeruser@gmail.com');
     cy.get('#reset-password-button').click();
-    cy.wait('@noUser');
     cy.contains('There is no user with such email').should('be.visible');
   });
 
@@ -29,7 +28,6 @@ describe('reset password page', () => {
     ).as('networkError');
     cy.get('#email').type('testeruser@gmail.com');
     cy.get('#reset-password-button').click();
-    cy.wait('@networkError');
   });
 
   it('user should be able get recovery email', () => {
@@ -42,6 +40,5 @@ describe('reset password page', () => {
     ).as('success');
     cy.get('#email').type('testeruser@gmail.com');
     cy.get('#reset-password-button').click();
-    cy.wait('@success');
   });
 });

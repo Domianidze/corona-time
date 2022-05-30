@@ -9,7 +9,6 @@ describe('login page', () => {
       fixture: 'username-invalid.json',
     }).as('usernameInvalid');
     cy.login();
-    cy.wait('@usernameInvalid');
     cy.contains('There is no user with such username').should('be.visible');
   });
 
@@ -19,7 +18,6 @@ describe('login page', () => {
       fixture: 'password-invalid.json',
     }).as('passwordInvalid');
     cy.login();
-    cy.wait('@passwordInvalid');
     cy.contains('Password is not valid').should('be.visible');
   });
 
@@ -28,7 +26,6 @@ describe('login page', () => {
       forceNetworkError: true,
     }).as('networkError');
     cy.login();
-    cy.wait('@networkError');
   });
 
   it('user can login and stay logged in', () => {
@@ -41,8 +38,6 @@ describe('login page', () => {
       fixture: 'countries-successful.json',
     }).as('countriesSuccessful');
     cy.login();
-    cy.wait('@successful');
-    cy.wait('@countriesSuccessful');
     cy.url().should('include', 'landing');
 
     cy.reload();

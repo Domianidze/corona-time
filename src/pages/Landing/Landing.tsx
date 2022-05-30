@@ -2,16 +2,16 @@ import { useState, useEffect, useContext } from 'react';
 
 import axios from 'axios';
 
-import AuthContext from 'state/AuthContext';
+import { AuthContext } from 'state';
 
 import { Outlet, useLocation, NavLink } from 'react-router-dom';
 
 import { useTranslation } from 'react-i18next';
 
-import Layout from './components/Layout';
+import { Layout } from './components';
 import { Title } from 'components';
 
-import { API_URL } from 'config/api';
+const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
 
 const Landing = () => {
   const { t } = useTranslation();
@@ -34,15 +34,12 @@ const Landing = () => {
 
     const getCountries = async () => {
       try {
-        const response = await axios.get(`${API_URL}/countries`, {
+        const response = await axios.get(`${REACT_APP_API_URL}/countries`, {
           headers: { Authorization: `Bearer ${authCtx.token}` },
         });
 
-        console.log(response.data);
         setCountries(response?.data);
-      } catch (err) {
-        console.error(err);
-      }
+      } catch (err) {}
     };
 
     getCountries();

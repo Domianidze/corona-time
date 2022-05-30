@@ -10,9 +10,10 @@ import { WelcomeText } from 'components';
 import { Input } from 'components';
 import { Button } from 'components';
 
-import { API_URL, SIGN_UP_CONFIRM_URL } from 'config/api';
+const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
+const REACT_APP_FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL;
 
-const Signup = () => {
+const SignUp = () => {
   const { t } = useTranslation();
 
   const navigate = useNavigate();
@@ -27,14 +28,14 @@ const Signup = () => {
     mode: 'onTouched',
   });
 
-  const signupHandler = handleSubmit(async (data) => {
+  const signUpHandler = handleSubmit(async (data) => {
     try {
       const requestData = {
         ...data,
-        redirectOnConfirm: SIGN_UP_CONFIRM_URL,
+        redirectOnConfirm: `${REACT_APP_FRONTEND_URL}/notification/confirm-account`,
       };
 
-      await axios.post(`${API_URL}/register`, requestData, {
+      await axios.post(`${REACT_APP_API_URL}/register`, requestData, {
         headers: {
           accept: 'application/json',
           'Content-Type': 'application/json',
@@ -46,7 +47,6 @@ const Signup = () => {
       const error = err?.response?.data;
 
       if (!error) {
-        console.error(err);
         return;
       }
 
@@ -67,13 +67,13 @@ const Signup = () => {
 
   return (
     <div className='w-fit'>
-      <WelcomeText main={t('signupTitle')} secondary={t('signupParagraph')} />
-      <form className='max-w-sm' onSubmit={signupHandler}>
+      <WelcomeText main={t('signUpTitle')} secondary={t('signUpParagraph')} />
+      <form className='max-w-sm' onSubmit={signUpHandler}>
         <Input
-          label={t('signupUsernameLabel')}
+          label={t('signUpUsernameLabel')}
           type='text'
-          placeholder={t('signupUsernamePlaceholder')}
-          note={t('signupUsernameNote')}
+          placeholder={t('signUpUsernamePlaceholder')}
+          note={t('signUpUsernameNote')}
           id='username'
           register={{
             ...register('username', {
@@ -137,16 +137,16 @@ const Signup = () => {
           error={errors?.repeatPassword?.message}
           isTouched={touchedFields?.repeatPassword}
         />
-        <Button type='submit' value={t('signupButton')} id='signup-button' />
+        <Button type='submit' value={t('signUpButton')} id='signUp-button' />
       </form>
       <p className='text-dark/60 text-center max-w-sm'>
         {t('alreadyHaveAccount')}{' '}
-        <Link to='/authentication/login' className='text-dark/100 font-bold'>
-          {t('login')}
+        <Link to='/authentication/logIn' className='text-dark/100 font-bold'>
+          {t('logIn')}
         </Link>
       </p>
     </div>
   );
 };
 
-export default Signup;
+export default SignUp;

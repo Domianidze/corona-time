@@ -1,7 +1,9 @@
+import { PropsWithChildren } from 'react';
+
 import Header from './Header';
 import Wrapper from './Wrapper';
 
-const Layout: React.FC<{ children: React.ReactNode }> = (props) => {
+const Layout: React.FC<PropsWithChildren<unknown>> = (props) => {
   return (
     <div>
       <Header />
