@@ -1,14 +1,14 @@
 describe('header component', () => {
   beforeEach(() => {
     cy.visit('/');
-    cy.intercept('POST', 'https://coronatime-api.devtest.ge/api/login', {
+    cy.intercept('POST', `${Cypress.env('API_URL')}/login`, {
       statusCode: 200,
       fixture: 'login-successful.json',
     }).as('loginSuccessful');
-    cy.intercept('GET', 'https://coronatime-api.devtest.ge/api/countries', {
+    cy.intercept('GET', `${Cypress.env('API_URL')}/countries`, {
       forceNetworkError: true,
     }).as('networkError');
-    cy.login();
+    cy.logIn();
   });
 
   it('mobile user should be able to open and close menu', () => {

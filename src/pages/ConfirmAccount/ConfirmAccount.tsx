@@ -6,7 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 import { useTranslation } from 'react-i18next';
 
-import { SuccessBigIcon } from 'assets/img/icons';
+import { SuccessBigIcon } from 'assets';
 import { Button } from 'components';
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL;

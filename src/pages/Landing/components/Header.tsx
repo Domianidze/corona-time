@@ -5,10 +5,9 @@ import { AuthContext } from 'state';
 import { useTranslation } from 'react-i18next';
 
 import Wrapper from './Wrapper';
-import LangSelect from 'components/LangSelect';
+import { LangSelect } from 'components';
 
-import { LogoImg } from 'assets/img';
-import { MenuIcon } from 'assets/img/icons';
+import { LogoImg, MenuIcon } from 'assets';
 
 const Header: React.FC = () => {
   const { t } = useTranslation();

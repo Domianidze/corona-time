@@ -10,10 +10,7 @@ import { useForm } from 'react-hook-form';
 
 import { useTranslation } from 'react-i18next';
 
-import { WelcomeText } from 'components';
-import { Input } from 'components';
-import { CheckBox } from 'components';
-import { Button } from 'components';
+import { WelcomeText, Input, CheckBox, Button } from 'components';
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
 
@@ -40,7 +37,7 @@ const LogIn = () => {
       };
 
       const response = await axios.post(
-        `${REACT_APP_API_URL}/logIn`,
+        `${REACT_APP_API_URL}/login`,
         requestData,
         {
           headers: {
@@ -138,7 +135,7 @@ const LogIn = () => {
         <Link
           to='/authentication/signUp'
           className='text-dark/100 font-bold'
-          id='signUp-free-button'
+          id='signup-free-button'
         >
           {t('signUpFree')}
         </Link>

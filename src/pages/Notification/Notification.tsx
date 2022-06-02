@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 
 import { LangSelect } from 'components';
 
-import { LogoImg } from 'assets/img';
+import { LogoImg } from 'assets';
 
 const Notification = () => {
   return (

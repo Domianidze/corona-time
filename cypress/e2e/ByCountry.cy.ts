@@ -1,15 +1,15 @@
 describe('by country tab', () => {
   beforeEach(() => {
     cy.visit('/');
-    cy.intercept('POST', 'https://coronatime-api.devtest.ge/api/login', {
+    cy.intercept('POST', `${Cypress.env('API_URL')}/login`, {
       statusCode: 200,
       fixture: 'login-successful.json',
     }).as('loginSuccessful');
-    cy.intercept('GET', 'https://coronatime-api.devtest.ge/api/countries', {
+    cy.intercept('GET', `${Cypress.env('API_URL')}/countries`, {
       statusCode: 200,
       fixture: 'countries-successful.json',
     }).as('countriesSuccessful');
-    cy.login();
+    cy.logIn();
     cy.get('#by-country-button').click();
   });
 

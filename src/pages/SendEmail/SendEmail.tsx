@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { SuccessBigIcon } from 'assets/img/icons';
+import { SuccessBigIcon } from 'assets';
 
 const SendEmail = () => {
   const { t } = useTranslation();

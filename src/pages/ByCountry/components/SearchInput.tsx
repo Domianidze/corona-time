@@ -1,4 +1,4 @@
-import { SearchIcon } from 'assets/img/icons';
+import { SearchIcon } from 'assets';
 
 const SearchInput: React.FC<{
   id: string;

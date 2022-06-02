@@ -8,7 +8,7 @@ describe('login page', () => {
       statusCode: 422,
       fixture: 'username-invalid.json',
     }).as('usernameInvalid');
-    cy.login();
+    cy.logIn();
     cy.contains('There is no user with such username').should('be.visible');
   });
 
@@ -17,7 +17,7 @@ describe('login page', () => {
       statusCode: 422,
       fixture: 'password-invalid.json',
     }).as('passwordInvalid');
-    cy.login();
+    cy.logIn();
     cy.contains('Password is not valid').should('be.visible');
   });
 
@@ -25,19 +25,19 @@ describe('login page', () => {
     cy.intercept('POST', 'https://coronatime-api.devtest.ge/api/login', {
       forceNetworkError: true,
     }).as('networkError');
-    cy.login();
+    cy.logIn();
   });
 
   it('user can login and stay logged in', () => {
-    cy.intercept('POST', 'https://coronatime-api.devtest.ge/api/login', {
+    cy.intercept('POST', `${Cypress.env('API_URL')}/login`, {
       statusCode: 200,
       fixture: 'login-successful.json',
     }).as('successful');
-    cy.intercept('GET', 'https://coronatime-api.devtest.ge/api/countries', {
+    cy.intercept('GET', `${Cypress.env('API_URL')}/countries`, {
       statusCode: 200,
       fixture: 'countries-successful.json',
     }).as('countriesSuccessful');
-    cy.login();
+    cy.logIn();
     cy.url().should('include', 'landing');
 
     cy.reload();

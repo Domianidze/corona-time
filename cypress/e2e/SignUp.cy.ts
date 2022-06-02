@@ -16,7 +16,7 @@ describe('signup page', () => {
       statusCode: 422,
       fixture: 'username-taken.json',
     }).as('usernameTaken');
-    cy.signup();
+    cy.signUp();
     cy.contains('Username is already taken').should('be.visible');
   });
 
@@ -25,21 +25,21 @@ describe('signup page', () => {
       statusCode: 422,
       fixture: 'email-taken.json',
     }).as('emailTaken');
-    cy.signup();
+    cy.signUp();
     cy.contains('Email is already taken').should('be.visible');
   });
 
   it('error should be logged to console if response has no message', () => {
-    cy.intercept('POST', 'https://coronatime-api.devtest.ge/api/register', {
+    cy.intercept('POST', `${Cypress.env('API_URL')}/register`, {
       forceNetworkError: true,
     }).as('networkError');
-    cy.signup();
+    cy.signUp();
   });
 
   it('user should be able to signup', () => {
-    cy.intercept('POST', 'https://coronatime-api.devtest.ge/api/register', {
+    cy.intercept('POST', `${Cypress.env('API_URL')}/register`, {
       statusCode: 201,
     }).as('successful');
-    cy.signup();
+    cy.signUp();
   });
 });

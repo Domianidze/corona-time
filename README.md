@@ -61,7 +61,7 @@ you can run and view tests in the Cypress GUI. You can open the Cypress GUI  usi
 
 1\. First of all create the config file and change it if needed:
 ```sh
-cp cypress.json.example cypress.json
+cp cypress.config.ts.example cypress.config.ts
 ```
 
 2\. Secondly start the dev server:

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ArrowIcon, ArrowTopIcon, ArrowBottomIcon } from 'assets/img/arrows';
+import { ArrowIcon, ArrowTopIcon, ArrowBottomIcon } from 'assets';
 
 import { sortKeys } from '../sortTypes';
 

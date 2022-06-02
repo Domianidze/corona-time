@@ -17,7 +17,9 @@
 # cypress
 .nyc_output
 coverage
-cypress.json
+videos
+screenshots
+cypress.config.ts
 
 
 # misc

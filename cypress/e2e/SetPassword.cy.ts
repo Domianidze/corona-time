@@ -11,26 +11,18 @@ describe('set password page', () => {
   });
 
   it('error should be logged to console if hash is invalid', () => {
-    cy.intercept(
-      'POST',
-      'https://coronatime-api.devtest.ge/api/password/recover',
-      {
-        statusCode: 401,
-      }
-    );
+    cy.intercept('POST', `${Cypress.env('API_URL')}/password/recover`, {
+      statusCode: 401,
+    });
     cy.get('#password').type('asd');
     cy.get('#repeat-password').type('asd');
     cy.get('#set-password-button').click();
   });
 
   it('user can set new password', () => {
-    cy.intercept(
-      'POST',
-      'https://coronatime-api.devtest.ge/api/password/recover',
-      {
-        statusCode: 200,
-      }
-    );
+    cy.intercept('POST', `${Cypress.env('API_URL')}/password/recover`, {
+      statusCode: 200,
+    });
     cy.get('#password').type('asd');
     cy.get('#repeat-password').type('asd');
     cy.get('#set-password-button').click();

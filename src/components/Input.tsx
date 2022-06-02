@@ -1,6 +1,6 @@
 import { UseFormRegisterReturn } from 'react-hook-form';
 
-import { ErrorIcon, SuccessIcon } from 'assets/img/icons';
+import { ErrorIcon, SuccessIcon } from 'assets';
 
 const Input: React.FC<{
   label: string;

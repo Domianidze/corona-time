@@ -10,9 +10,7 @@ import { useForm } from 'react-hook-form';
 
 import { useTranslation } from 'react-i18next';
 
-import { Title } from 'components';
-import { Input } from 'components';
-import { Button } from 'components';
+import { Title, Input, Button } from 'components';
 
 const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
 
